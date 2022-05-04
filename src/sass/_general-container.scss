@@ -1,0 +1,33 @@
+.movie__cover{
+    max-width: 280px;
+    max-height: 398px;
+    border-radius: 5px;
+    @media screen and (min-width: 767px){
+            max-width: 336px;
+            max-height: 455px;
+
+    }
+    @media screen and (min-width: 1024px){
+        max-width: 309px;
+        max-height: 489px;
+ 
+    }
+}
+
+.movies{
+display: flex;
+flex-direction: column;
+@media screen and (min-width: 767px){
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: unset;
+    
+}
+
+}
+.movie{
+margin: auto;
+}
+
+.movie__cover-inner{
+}

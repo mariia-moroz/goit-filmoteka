@@ -90,12 +90,39 @@ $transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .film-info__poster {
-    width: 369px;
+    height: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 30px;
+    }
+
+    @media screen and (min-width: 768px) {
+        margin-right: 32px;
+        min-width: 264px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1023px){
+        height: fit-content;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        margin-right: 30px;
+        min-width: 396px;
+    }
+}
+
+.film-info__image {
+    object-fit: cover;
 }
 
 .film-info__title {
     font-size: 20px;
     line-height: 1.15;
+    font-weight: inherit;
+    text-transform: uppercase;
+
     margin-bottom: 20px;
 
     @media screen and (min-width: 1024px) {
@@ -135,6 +162,10 @@ $transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
 }
 
+.film-info__properties .original-title {
+    text-transform: uppercase;
+}
+
 .film-info__properties .accent,
 .film-info__properties .simple {
     padding: 1px 4px 1px 4px;
@@ -158,4 +189,41 @@ $transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 .film-info__properties .simple {
     background-color: $secondary-white-color;
+}
+
+.film-info__description-title, 
+.film-info__description {
+    font-size: 12px;
+    font-weight: inherit;
+}
+
+.film-info__description-title {
+    line-height: 1.33;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.film-info__description {
+    line-height: 1.67;
+    margin-bottom: 20px;
+    max-height: 256px;
+    max-width: 100%;
+    overflow-y: scroll;
+}
+
+.film-info__button {
+    padding: 14px 8px 12px 8px;
+    font-size: 12px;
+    line-height: 1.33;
+    font-weight: inherit;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border: 1px solid $primary-text-color;
+    background-color: $primary-white-color;
+}
+
+.film-info__button--accent {
+    border: 1px solid transparent;
+    background-color: $accent-color;
+    color: $primary-white-color;
 }

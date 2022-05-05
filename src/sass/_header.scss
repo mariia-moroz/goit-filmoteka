@@ -2,7 +2,7 @@ header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(../images/header-background.jpg);
 
-  height: 216px;
+  height: 230px;
   width: 100%;
 
   background-size: cover;
@@ -76,6 +76,13 @@ header {
   background-color: #ff6b08;
 }
 
+.search-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 37px;
+}
+
 .search-field__input {
   font-family: Roboto;
   font-size: 14px;
@@ -131,11 +138,4 @@ header {
   top: 0;
   align-items: center;
   justify-content: center;
-}
-
-.search-field {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 41px;
 }

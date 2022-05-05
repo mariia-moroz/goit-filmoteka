@@ -3,13 +3,13 @@
     max-height: 398px;
     border-radius: 5px;
     @media screen and (min-width: 767px){
-            max-width: 336px;
-            max-height: 455px;
+            min-width: 336px;
+            min-height: 455px;
 
     }
     @media screen and (min-width: 1024px){
-        max-width: 309px;
-        max-height: 489px;
+        min-width: 309px;
+        min-height: 489px;
  
     }
 }
@@ -21,13 +21,56 @@ flex-direction: column;
     display: flex;
     flex-wrap: wrap;
     flex-direction: unset;
-    
 }
-
+@media screen and (min-width: 1024px){
+    display: flex;
+ 
+}
 }
 .movie{
-margin: auto;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 21px; 
+@media screen and (min-width: 767px){
+margin-right: 16px;
+margin-left: 0px;
+}
+@media screen and (min-width: 1024px){
+margin: 0px;
+}
 }
 
-.movie__cover-inner{
+
+.movie:nth-child(even){
+    @media screen and (min-width: 767px){
+        margin-left: 16px;
+        margin-right: 0px;
+    }
+    @media screen and (min-width: 1024px){
+        margin: 0;
+    }
 }
+.movie:nth-child(odd){
+    @media screen and (min-width: 767px) {
+        margin-left: 0px;
+        margin-right: 16px;
+    }
+    @media screen and (min-width: 1024px){
+margin: 0;
+    }
+}
+
+.movie:nth-child(3n+2){
+    @media screen and (min-width: 1024px) {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+}
+
+// .movie:last-child {
+//     @media screen and (min-width: 767px){
+// margin-left: 0px;
+//     }
+    
+// }
+

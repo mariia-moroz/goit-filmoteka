@@ -104,39 +104,58 @@ $transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 
-.film-info__lists {
-    display: flex;
+.film-info__properties {
+    margin-bottom: 20px;
 }
 
-.film-info__titles-list,
-.film-info__properties-list {
+.film-info__properties dt,
+.film-info__properties dd {
     font-size: 12px;
     line-height: 1.33;
-}
 
-.film-info__titles-list {
-    color: $secondary-text-color;
-}
+    margin-left: 0;
 
-.film-info__title-item,
-.film-info__property-item {
     &:not(:last-child) {
         margin-bottom: 10px;
     }
 }
 
-.film-info__property-item .accent,
-.film-info__property-item .simple {
+.film-info__properties dt {
+    width: 108px;
+    float: left;
+
+    color: $secondary-text-color;
+
+    @media screen and (min-width: 1024px) {
+        width: 152px;
+    }
+}
+
+.film-info__properties dd {
+    display: flex;
+}
+
+.film-info__properties .accent,
+.film-info__properties .simple {
     padding: 1px 4px 1px 4px;
     border-radius: 5px;
+    display: block;
+    text-align: center;
     min-width: 36px;
 }
 
-.film-info__property-item .accent {
+.film-info__properties .accent {
     background-color: $accent-color;
     color: $primary-white-color;
 }
 
-.film-info__property-item .simple {
+.film-info__properties .separator {
+    margin-left: 3px;
+    margin-right: 3px;
+    
+    color: $secondary-text-color;
+}
+
+.film-info__properties .simple {
     background-color: $secondary-white-color;
 }

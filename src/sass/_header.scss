@@ -2,17 +2,20 @@ header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(../images/header-background.jpg);
 
-  height: 216px;
+
   width: 100%;
   min-width: 320px;
+  padding-top: 40px;
+  padding-bottom: 60px;
 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+
 }
 
 .logo {
-  margin-top: 40px;
+
   display: flex;
   align-items: center;
 }
@@ -43,7 +46,6 @@ header {
 .nav__list {
   display: flex;
   margin-left: auto;
-  margin-top: 39px;
   align-items: center;
 
   color: $primary-white-color;

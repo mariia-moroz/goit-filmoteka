@@ -1,4 +1,4 @@
-<header data-action="header">
+<header class="header" data-action="header">
   <div class="container" data-action="container">
     <nav>
       <div class="nav__wrap">
@@ -13,20 +13,32 @@
           <li class="nav__item">My library</li>
         </ul>
       </div>
-      <div class="search-field"  data-action="search">
-        <span class="search-field__wrap">
-          <input class="search-field__input" placeholder="Поиск фильмов" />
-          <div class="search-field__icon--wrap">
-            <svg width="12px" height="12px" class="search-field__icon">
-              <use href="/images/sprite.svg#search"></use>
-            </svg>
-          </div>
-        </span>
-      </div>
     </nav>
-    <ul class="library-button__list list visually-hidden"  data-action="buttons">
-      <li class="library-button__item"><button type="button" class="library-button">Watched</button></li>
-      <li class="library-button__item"><button type="button" class="library-button">Queue</button></li>
+    <div class="search-field" data-action="search-field">
+      <form class="search-field__form">
+        <input
+          class="search-field__input"
+          placeholder="Поиск фильмов"
+          type="text"
+          name="search"
+          id="search"
+          autocomplete="off"
+          data-action="search-input"
+        />
+        <button class="search-field__btn" data-action="search-btn" type="submit">
+          <svg width="12px" height="12px" class="search-field__icon">
+            <use href="/images/sprite.svg#search"></use>
+          </svg>
+        </button>
+      </form>
+    </div>
+    <ul class="library-button__list list visually-hidden" data-action="library-buttons">
+      <li class="library-button__item">
+        <button type="button" class="library-button">Watched</button>
+      </li>
+      <li class="library-button__item">
+        <button type="button" class="library-button">Queue</button>
+      </li>
     </ul>
   </div>
 </header>

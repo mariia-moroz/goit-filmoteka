@@ -1,0 +1,31 @@
+footer {
+    background-color: $secondary-white-color;
+    min-width: 320px;
+}
+
+.footer_container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.footer_text {
+    color: $footer-text-color;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.14;
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+    @media screen and (max-width: 768px) {
+        width: 270px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
+
+.footer_icon {
+    margin-left: 10px;
+    margin-right: 10px
+}

@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import notiflix from './notiflix';
 let filmToFind;
 
 const refs = {
@@ -16,7 +16,10 @@ function onInput(event) {
 
 async function onBtn(event) {
   event.preventDefault();
+  MovieClear()
+  notiflix.onLoadingleAdd()
   const movies = await fetchSearch(filmToFind);
+  notiflix.onLoadingRemove()
 }
 
 async function fetchSearch(filmToFind) {
@@ -29,4 +32,7 @@ async function fetchSearch(filmToFind) {
   const response = await axios.get(url);
   const movies = response.data;
   return movies;
+}
+function MovieClear() {
+  refs.container.innerHTML = '';
 }

@@ -134,6 +134,10 @@ button[data-action='search-btn'] {
   font: inherit;
   color: inherit;
   background: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .search-field__input {
@@ -170,6 +174,14 @@ button[data-action='search-btn'] {
     letter-spacing: 0em;
     text-align: left;
     color: $primary-white-color;
+
+    transition-property: color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in;
+  }
+
+  &:focus::placeholder {
+    color: transparent;
   }
 }
 

@@ -1,4 +1,11 @@
-export default function renderFilmCard(root, { results }) {
+export default function renderFilmCard({
+  root,
+  searchResults,
+  base_url,
+  poster_size,
+  backdrop_sizes,
+}) {
+  const { results } = searchResults;
   results.forEach(({ id, title, poster_path, vote_average, release_date, genre_ids }) => {
     root.insertAdjacentHTML(
       'beforeend',
@@ -6,7 +13,7 @@ export default function renderFilmCard(root, { results }) {
     <div class="movie" data-id="${id}">
       <img
         class="movie__cover"
-        src=${poster_path}
+        src="${base_url}${backdrop_sizes[0]}${poster_path}"
         alt="${title}"
       />
       <h2 class="card-preview-info__name">${title}</h2>

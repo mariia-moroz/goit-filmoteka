@@ -1,45 +1,55 @@
 // import './sass/main.scss';
-import getPopularFilms from './getPopularFilms';
 import renderFilmCard from './renderFilmCard';
-import getConfiguration from './getConfiguration';
+import getData from './getData';
 
 const options = {
   root: null,
-  key: '306e564986f0782b8ec4bf227b0f3c28',
+  key: 'api_key=306e564986f0782b8ec4bf227b0f3c28',
   searchResults: {},
   base_url: 'none',
   poster_size: '',
   backdrop_sizes: [],
+  genres: [],
+  popularFilmsUrl: 'https://api.themoviedb.org/3/trending/movie/week?',
+  configUrl: 'https://api.themoviedb.org/3/configuration?',
+  genresUrl: 'https://api.themoviedb.org/3/genre/movie/list?',
 };
 
 options.root = document.querySelector('body');
 
 export default function showMovieGallery() {
   renderPopFilms();
-  console.log(options.base_url);
 }
 
 async function renderPopFilms() {
-  let { searchResults, root, base_url } = options;
-  //getting array of films
+  //---getting array of films
   try {
-    const { data } = await getPopularFilms();
-    searchResults = data;
-    console.log(searchResults);
+    const { data } = await getData(options.popularFilmsUrl + options.key);
+    options.searchResults = data;
   } catch (error) {
     console.error('error is: ', error);
   }
 
-  //---getting base url to get images
+  //---getting base url to build full url for images
   try {
-    const { data } = await getConfiguration();
-    base_url = data.images.base_url;
-    console.log('base url', base_url);
+    const { data } = await getData(options.configUrl + options.key);
+    options.base_url = data.images.base_url;
+    options.backdrop_sizes = data.images.backdrop_sizes;
   } catch (error) {
     console.error('error is: ', error);
   }
+
+  //---getting array of genres
+  try {
+    const { data } = await getData(options.genresUrl + options.key);
+    options.genres = data.genres;
+    console.log(options.genres);
+  } catch (error) {
+    console.error('error is: ', error);
+  }
+
   console.log(options);
 
   //---rendering every card
-  renderFilmCard(root, searchResults);
+  renderFilmCard(options);
 }

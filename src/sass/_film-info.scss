@@ -18,7 +18,7 @@ img {
 
 .film-info__overlay {
     opacity: 0;
-    visibility: hidden;
+    visibility:visible;
     pointer-events: none;
 
     position: fixed;
@@ -94,6 +94,7 @@ img {
 
     @media screen and (max-width: 767px) {
         margin-bottom: 30px;
+        min-height: 356px;
     }
 
     @media screen and (min-width: 768px) {
@@ -280,7 +281,7 @@ img {
     }
 }
 
-.close-modal-button {
+.film-info__close-button {
     padding: 0;
     position: absolute;
     top: 10px;

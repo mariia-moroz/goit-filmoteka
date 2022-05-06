@@ -1,10 +1,11 @@
 const refs = {
     movieContainer: document.querySelector('.movies'),
+    modal: document.querySelector('.film-info'),
 }
 
 const API_KEY = '306e564986f0782b8ec4bf227b0f3c28';
 const BASE_URL = 'https://api.themoviedb.org/3/movie';
-const filmId = '566574';
+var filmId = '';
 
 refs.movieContainer.addEventListener('click', onMovieCardClick);
 
@@ -13,13 +14,19 @@ function onMovieCardClick(e) {
     if (!movieCard) {
         return;
     }
-    console.log(movieCard);
+    filmId = movieCard.dataset.id;
     createModal();
 }
 
 function hasSomeParentTheClass(element, classname) {
     if (element.classList?.contains(classname)) return element;
     return element.parentNode && hasSomeParentTheClass(element.parentNode, classname);
+}
+
+function onCloseButtonClick() {
+    const overlay = refs.modal.querySelector('.film-info__overlay');
+    overlay.classList.remove('is-open');
+    refs.modal.innerHTML = '';
 }
 
 async function getFilmInfo() {
@@ -31,9 +38,10 @@ async function createModal() {
     const filmInfo = await getFilmInfo();
     console.log(filmInfo);
     const genres = filmInfo.genres.map(genre => genre.name).join(', ');
+
     const modal = `
-    <div class="film-info__overlay is-open">
-      <div class="film-info__container">
+<div class="film-info__overlay">
+    <div class="film-info__container">
         <div class="film-info__poster">
           <img
             loading="lazy"
@@ -69,14 +77,20 @@ async function createModal() {
             <button class="film-info__button film-info__button--simple">add to queue</button>
           </div>
         </div>
-        <button type="button" class="close-modal-button">
-          <svg class="data-modal__close-icon" width="30" height="30">
+        <button type="button" class="film-info__close-button">
+          <svg class="film-info__close-icon" width="30" height="30">
             <use href="./images/sprite.svg#close"></use>
           </svg>
         </button>
-      </div>
     </div>
+</div>
     `;
 
-    document.body.insertAdjacentHTML('beforeend', modal);
+    refs.modal.innerHTML = modal;
+
+    const overlay = refs.modal.querySelector('.film-info__overlay');
+    const closeButton = refs.modal.querySelector('.film-info__close-button');
+
+    overlay.classList.add('is-open');
+    closeButton.addEventListener('click', onCloseButtonClick);
 }

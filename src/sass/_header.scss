@@ -1,21 +1,48 @@
-header {
+.header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(../images/header-background.jpg);
-
+    url(../images/bg_header.jpg);
 
   width: 100%;
+  height: 230px;
   min-width: 320px;
   padding-top: 40px;
-  padding-bottom: 60px;
+  padding-bottom: 97px;
 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  @media screen and (max-width: 767px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/bg_header-mobile.jpg');
 
+    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('../images/bg_header-mobile@2x.jpg');
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/bg_header-tablet.jpg');
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('../images/bg_header-tablet@2x.jpg');
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/bg_header.jpg');
+
+    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('../images/bg_header@2x.jpg');
+    }
+  }
 }
 
 .logo {
-
   display: flex;
   align-items: center;
 }
@@ -23,6 +50,9 @@ header {
 .logo__icon {
   justify-self: middle;
   margin-right: 10px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .logo__text {
@@ -36,6 +66,10 @@ header {
 
   margin: 0;
   padding: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   color: $primary-white-color;
   @media screen and (min-width: 768px) {
@@ -68,6 +102,10 @@ header {
   padding: 10px 0;
   position: relative;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &:not(:last-child) {
     margin-right: 39px;
   }
@@ -87,6 +125,15 @@ header {
   align-items: center;
   justify-content: center;
   margin-top: 37px;
+}
+
+button[data-action='search-btn'] {
+  padding: 0;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  background: none;
 }
 
 .search-field__input {
@@ -126,7 +173,7 @@ header {
   }
 }
 
-.search-field__wrap {
+.search-field__form {
   position: relative;
 }
 
@@ -135,7 +182,7 @@ header {
   text-align: center;
 }
 
-.search-field__icon--wrap {
+.search-field__btn {
   width: 20px;
   height: 20px;
   display: flex;

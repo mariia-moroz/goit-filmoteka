@@ -88,4 +88,4 @@ const n={movieContainer:document.querySelector(".movies"),modal:document.querySe
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/headerMarkup"),require("./js/fetch-by-name"),require("./js/filmInfoModalCreate");
 },{"./sass/main.scss":"clu1","./js/headerMarkup":"wKMR","./js/fetch-by-name":"xCMy","./js/filmInfoModalCreate":"qRfC"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-filmoteka/src.accffa8a.js.map
+//# sourceMappingURL=/goit-filmoteka/src.dc9f8dc7.js.map

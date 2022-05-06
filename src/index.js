@@ -1,4 +1,4 @@
 // import './sass/main.scss';
-import getFilms from './js_getFilms/getPopularFilms';
+import showMovieGallery from './js/showMovieGallery';
 
-const popularFilms = getFilms();
+showMovieGallery();

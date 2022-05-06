@@ -5,4 +5,4 @@ const e={nav:document.querySelector("nav"),header:document.querySelector('[data-
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/headerMarkup");
 },{"./sass/main.scss":"clu1","./js/headerMarkup":"wKMR"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-filmoteka/src.7773a335.js.map
+//# sourceMappingURL=/goit-filmoteka/src.e548ef53.js.map

@@ -45,14 +45,15 @@
 .logo {
   display: flex;
   align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .logo__icon {
   justify-self: middle;
   margin-right: 10px;
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .logo__text {
@@ -66,10 +67,6 @@
 
   margin: 0;
   padding: 0;
-
-  &:hover {
-    cursor: pointer;
-  }
 
   color: $primary-white-color;
   @media screen and (min-width: 768px) {
@@ -176,8 +173,8 @@ button[data-action='search-btn'] {
     color: $primary-white-color;
 
     transition-property: color;
-    transition-duration: 200ms;
-    transition-timing-function: ease-in;
+    transition-duration: $transition-duration;
+    transition-timing-function: ease;
   }
 
   &:focus::placeholder {
@@ -192,6 +189,11 @@ button[data-action='search-btn'] {
 .search-field__icon {
   align-items: center;
   text-align: center;
+
+  stroke: white;
+  transition-property: stroke;
+  transition-duration: $transition-duration;
+  transition-timing-function: ease-in;
 }
 
 .search-field__btn {
@@ -203,4 +205,8 @@ button[data-action='search-btn'] {
   top: 0;
   align-items: center;
   justify-content: center;
+  &:hover .search-field__icon,
+  &:focus .search-field__icon {
+    stroke: $accent-color;
+  }
 }

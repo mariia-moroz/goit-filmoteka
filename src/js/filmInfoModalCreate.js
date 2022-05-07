@@ -1,21 +1,36 @@
+import getData from './getData';
+import notiflix from './notiflix';
+
 const refs = {
     movieContainer: document.querySelector('.movies'),
-    modal: document.querySelector('.film-info'),
+    modal: document.querySelector('.film-info__overlay'),
 }
 
-const API_KEY = '306e564986f0782b8ec4bf227b0f3c28';
-const BASE_URL = 'https://api.themoviedb.org/3/movie';
-var filmId = '';
+const options = {
+  root: null,
+  filmId: '',
+  key: 'api_key=306e564986f0782b8ec4bf227b0f3c28',
+  filmInfo: {},
+  img_base_url: 'none',
+  poster_size: '',
+  backdrop_sizes: [],
+  baseUrl: 'https://api.themoviedb.org/3/movie/',
+  filmInfoUrl: '',
+  configUrl: 'https://api.themoviedb.org/3/configuration?',
+};
 
 refs.movieContainer.addEventListener('click', onMovieCardClick);
 
 function onMovieCardClick(e) {
-    const movieCard = hasSomeParentTheClass(e.target, 'movie');
-    if (!movieCard) {
-        return;
-    }
-    filmId = movieCard.dataset.id;
-    createModal();
+  const movieCard = hasSomeParentTheClass(e.target, 'movie');
+  if (!movieCard) {
+    return;
+  }
+
+  options.root = refs.modal;
+  options.filmId = movieCard.dataset.id;
+  options.filmInfoUrl = `${options.baseUrl}${options.filmId}?`;
+  getFilmInfo();
 }
 
 function hasSomeParentTheClass(element, classname) {
@@ -24,31 +39,49 @@ function hasSomeParentTheClass(element, classname) {
 }
 
 function onCloseButtonClick() {
-    const overlay = refs.modal.querySelector('.film-info__overlay');
-    overlay.classList.remove('is-open');
-    refs.modal.innerHTML = '';
+  options.root.classList.remove('is-open');
+  document.body.classList.remove('is-open');
+  options.root.innerHTML = '';
 }
 
 async function getFilmInfo() {
-    const response = await fetch(`${BASE_URL}/${filmId}?api_key=${API_KEY}`);
-    return response.json();
+  notiflix.onLoadingleAdd();
+
+  try {
+    const { data } = await getData(options.filmInfoUrl + options.key);
+    options.filmInfo = data;
+  } catch (error) {
+    notiflix.onError();
+    console.error('error is: ', error);
+  }
+
+  try {
+    const { data } = await getData(options.configUrl + options.key);
+    options.img_base_url = data.images.secure_base_url;
+
+    createModal(options);
+
+  } catch (error) {
+    notiflix.onError();
+    console.error('error is: ', error);
+  }
+
+  notiflix.onLoadingRemove();
 }
 
-async function createModal() {
-    const filmInfo = await getFilmInfo();
-    console.log(filmInfo);
-    const genres = filmInfo.genres.map(genre => genre.name).join(', ');
+function createModal({ filmInfo, img_base_url }) {
+  console.log(filmInfo);
+  const genres = filmInfo.genres.map(genre => genre.name).join(', ');
 
-    const modal = `
-<div class="film-info__overlay">
+  const modal = `
     <div class="film-info__container">
         <div class="film-info__poster">
           <img
             loading="lazy"
-            src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${filmInfo.poster_path}"
+            src="${img_base_url}w500${filmInfo.poster_path}"
             srcset="
-              https://www.themoviedb.org/t/p/w600_and_h900_bestv2${filmInfo.poster_path} 1x,
-              https://www.themoviedb.org/t/p/w1280${filmInfo.poster_path}                2x
+              ${img_base_url}w500${filmInfo.poster_path}           1x,
+              ${img_base_url}w780${filmInfo.poster_path}           2x
             "
             class="film-info__image img"
             alt="${filmInfo.original_title}"
@@ -83,14 +116,13 @@ async function createModal() {
           </svg>
         </button>
     </div>
-</div>
     `;
 
-    refs.modal.innerHTML = modal;
+  options.root.innerHTML = modal;
 
-    const overlay = refs.modal.querySelector('.film-info__overlay');
-    const closeButton = refs.modal.querySelector('.film-info__close-button');
+  const closeButton = options.root.querySelector('.film-info__close-button');
 
-    overlay.classList.add('is-open');
-    closeButton.addEventListener('click', onCloseButtonClick);
+  options.root.classList.add('is-open');
+  document.body.classList.add('is-open');
+  closeButton.addEventListener('click', onCloseButtonClick);
 }

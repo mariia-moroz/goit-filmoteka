@@ -70,6 +70,9 @@
   left: 0;
   opacity: 1;
   font-size: 100px;
+  @media screen and (max-width: 767px) {
+      font-size: 30px;
+    }
   font-weight: 700;
   text-align: center;
   background-image: url(../images/bg_modal-team.jpg);

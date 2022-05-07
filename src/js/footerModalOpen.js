@@ -23,7 +23,7 @@ function closeModal() {
 
   refs.overlay.style.opacity = '1';
   refs.modal.classList.toggle('modal-bg');
-  refs.closeModalBtn.removeEventListener(closeModal);
+  refs.closeModalBtn.removeEventListener('click', closeModal);
   document.removeEventListener('keydown', eventKeydown);
 }
 

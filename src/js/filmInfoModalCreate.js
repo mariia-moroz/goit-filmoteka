@@ -38,13 +38,6 @@ function hasSomeParentTheClass(element, classname) {
     return element.parentNode && hasSomeParentTheClass(element.parentNode, classname);
 }
 
-function onCloseButtonClick() {
-  window.removeEventListener('keydown', onKeyboardCloseModal);
-  options.root.classList.remove('is-open');
-  document.body.classList.remove('is-open');
-  options.root.innerHTML = '';
-}
-
 async function getFilmInfo() {
   notiflix.onLoadingleAdd();
 
@@ -68,6 +61,13 @@ async function getFilmInfo() {
   }
 
   notiflix.onLoadingRemove();
+}
+
+function onCloseButtonClick() {
+  window.removeEventListener('keydown', onKeyboardCloseModal);
+  options.root.classList.remove('is-open');
+  document.body.classList.remove('is-open');
+  options.root.innerHTML = '';
 }
 
 function onKeyboardCloseModal(e) {

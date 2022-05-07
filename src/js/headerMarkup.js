@@ -11,9 +11,9 @@ refs.nav.addEventListener('click', appendHomeHeaderMarkup);
 refs.nav.addEventListener('click', appendLibraryHeaderMarkup);
 
 function appendHomeHeaderMarkup(e) {
+  console.log(e.currentTarget.classList);
   if (
-    e.target.nodeName === 'use' ||
-    e.target.nodeName === 'svg' ||
+    e.currentTarget.classList === 'logo' ||
     e.target.innerText.toLowerCase() === 'home' ||
     e.target.innerText.toLowerCase() === 'filmoteka'
   ) {
@@ -34,10 +34,7 @@ function changeToLibraryHeaderMarkup() {
   //Задний фон
   refs.header.classList.add('library-header');
   refs.header.classList.remove('header');
-  //Контейнер
-  // refs.container.classList.add('library-header__container');
-  // refs.header.classList.remove('container');
-  //Рендерим кнопки
+  //Рендерим кнопкиs
   refs.buttons.classList.remove('visually-hidden');
   //Прячем поисковой инпут
   refs.input.classList.add('visually-hidden');
@@ -49,9 +46,6 @@ function changeToHomeHeaderMarkup() {
   //Задний фон
   refs.header.classList.add('header');
   refs.header.classList.remove('library-header');
-  //Контейнер
-  // refs.container.classList.add('container');
-  // refs.header.classList.remove('library-header__container');
   //Прячем кнопки
   refs.buttons.classList.add('visually-hidden');
   //Рендерим поисковой инпут

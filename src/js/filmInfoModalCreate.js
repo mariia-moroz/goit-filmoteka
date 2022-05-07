@@ -39,6 +39,7 @@ function hasSomeParentTheClass(element, classname) {
 }
 
 function onCloseButtonClick() {
+  window.removeEventListener('keydown', onKeyboardCloseModal);
   options.root.classList.remove('is-open');
   document.body.classList.remove('is-open');
   options.root.innerHTML = '';
@@ -69,8 +70,13 @@ async function getFilmInfo() {
   notiflix.onLoadingRemove();
 }
 
+function onKeyboardCloseModal(e) {
+  if (e.code === 'Escape') {
+    onCloseButtonClick();
+  }
+}
+
 function createModal({ filmInfo, img_base_url }) {
-  console.log(filmInfo);
   const genres = filmInfo.genres.map(genre => genre.name).join(', ');
 
   const modal = `
@@ -125,4 +131,5 @@ function createModal({ filmInfo, img_base_url }) {
   options.root.classList.add('is-open');
   document.body.classList.add('is-open');
   closeButton.addEventListener('click', onCloseButtonClick);
+  window.addEventListener('keydown', onKeyboardCloseModal);
 }

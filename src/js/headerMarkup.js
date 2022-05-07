@@ -1,29 +1,30 @@
 const refs = {
-  nav: document.querySelector('nav'),
+  logo: document.querySelector('.logo'),
+  navItems: document.querySelector('.nav__list'),
   header: document.querySelector('[data-action="header"]'),
   container: document.querySelector('[data-action="container"]'),
   buttons: document.querySelector('[data-action="library-buttons"]'),
   input: document.querySelector('[data-action="search-field"]'),
-  navItems: document.querySelector('.nav__list'),
 };
 
-refs.nav.addEventListener('click', appendHomeHeaderMarkup);
-refs.nav.addEventListener('click', appendLibraryHeaderMarkup);
+refs.navItems.addEventListener('click', onNavItemClick);
+refs.logo.addEventListener('click', onLogoClick);
 
-function appendHomeHeaderMarkup(e) {
-  console.log(e.currentTarget.classList);
-  if (
-    e.currentTarget.classList === 'logo' ||
-    e.target.innerText.toLowerCase() === 'home' ||
-    e.target.innerText.toLowerCase() === 'filmoteka'
-  ) {
+function onNavItemClick(e) {
+  if (e.target.innerText !== undefined && e.target.innerText.toLowerCase() === 'home') {
     changeToHomeHeaderMarkup();
+  } else if (
+    e.target.innerText !== undefined &&
+    e.target.innerText.toLowerCase() === 'my library'
+  ) {
+    changeToLibraryHeaderMarkup();
   }
 }
 
-function appendLibraryHeaderMarkup(e) {
-  if (e.target.innerText.toLowerCase() === 'my library') {
-    changeToLibraryHeaderMarkup();
+function onLogoClick(e) {
+  console.log(e.currentTarget.classList.contains('logo'));
+  if (e.currentTarget.className !== undefined && e.currentTarget.className === 'logo') {
+    changeToHomeHeaderMarkup();
   }
 }
 
@@ -32,9 +33,10 @@ function changeToLibraryHeaderMarkup() {
   refs.navItems.lastElementChild.classList.add('nav__item--current');
   refs.navItems.firstElementChild.classList.remove('nav__item--current');
   //Задний фон
+
+  refs.header.classList.remove('header-home');
   refs.header.classList.add('library-header');
-  refs.header.classList.remove('header');
-  //Рендерим кнопкиs
+  //Рендерим кнопки
   refs.buttons.classList.remove('visually-hidden');
   //Прячем поисковой инпут
   refs.input.classList.add('visually-hidden');
@@ -44,8 +46,9 @@ function changeToHomeHeaderMarkup() {
   refs.navItems.firstElementChild.classList.add('nav__item--current');
   refs.navItems.lastElementChild.classList.remove('nav__item--current');
   //Задний фон
-  refs.header.classList.add('header');
   refs.header.classList.remove('library-header');
+  refs.header.classList.add('header-home');
+
   //Прячем кнопки
   refs.buttons.classList.add('visually-hidden');
   //Рендерим поисковой инпут

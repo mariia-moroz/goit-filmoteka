@@ -15,7 +15,7 @@ const options = {
   genresUrl: 'https://api.themoviedb.org/3/genre/movie/list?',
 };
 
-options.root = document.querySelector('body');
+options.root = document.querySelector('.movies');
 
 export default function showMovieGallery() {
   renderPopFilms();

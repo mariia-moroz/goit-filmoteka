@@ -100,4 +100,4 @@ const n={movieContainer:document.querySelector(".movies"),modal:document.querySe
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=r(require("./js/showMovieGallery"));function r(e){return e&&e.__esModule?e:{default:e}}require("./js/headerMarkup"),require("./js/fetch-by-name"),require("./js/filmInfoModalCreate"),(0,e.default)();
 },{"./sass/main.scss":"clu1","./js/showMovieGallery":"JXet","./js/headerMarkup":"wKMR","./js/fetch-by-name":"xCMy","./js/filmInfoModalCreate":"qRfC"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-filmoteka/src.f3159724.js.map
+//# sourceMappingURL=/goit-filmoteka/src.91b64944.js.map

@@ -111,4 +111,4 @@ const e=document.getElementById("checkbox"),t=document.querySelector("body"),o=d
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=r(require("./js/showMovieGallery"));function r(e){return e&&e.__esModule?e:{default:e}}require("./js/headerMarkup"),require("./js/fetch-by-name"),require("./js/filmInfoModalCreate"),require("./js/footerModalOpen"),require("./js/pagination"),require("@fortawesome/fontawesome-free/js/all.js"),require("./js/theme-switcher"),(0,e.default)();
 },{"./sass/main.scss":"clu1","./js/showMovieGallery":"JXet","./js/headerMarkup":"wKMR","./js/fetch-by-name":"xCMy","./js/filmInfoModalCreate":"qRfC","./js/footerModalOpen":"IP4H","./js/pagination":"o8lo","@fortawesome/fontawesome-free/js/all.js":"M3sR","./js/theme-switcher":"keXy"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-filmoteka/src.5d984b32.js.map
+//# sourceMappingURL=/goit-filmoteka/src.33c78bcc.js.map

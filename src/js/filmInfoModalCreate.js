@@ -1,7 +1,7 @@
 const refs = {
-    movieContainer: document.querySelector('.movies'),
-    modal: document.querySelector('.film-info'),
-}
+  movieContainer: document.querySelector('.movies'),
+  modal: document.querySelector('.film-info'),
+};
 
 const API_KEY = '306e564986f0782b8ec4bf227b0f3c28';
 const BASE_URL = 'https://api.themoviedb.org/3/movie';
@@ -10,36 +10,36 @@ var filmId = '';
 refs.movieContainer.addEventListener('click', onMovieCardClick);
 
 function onMovieCardClick(e) {
-    const movieCard = hasSomeParentTheClass(e.target, 'movie');
-    if (!movieCard) {
-        return;
-    }
-    filmId = movieCard.dataset.id;
-    createModal();
+  const movieCard = hasSomeParentTheClass(e.target, 'movie');
+  if (!movieCard) {
+    return;
+  }
+  filmId = movieCard.dataset.id;
+  createModal();
 }
 
 function hasSomeParentTheClass(element, classname) {
-    if (element.classList?.contains(classname)) return element;
-    return element.parentNode && hasSomeParentTheClass(element.parentNode, classname);
+  if (element.classList?.contains(classname)) return element;
+  return element.parentNode && hasSomeParentTheClass(element.parentNode, classname);
 }
 
 function onCloseButtonClick() {
-    const overlay = refs.modal.querySelector('.film-info__overlay');
-    overlay.classList.remove('is-open');
-    refs.modal.innerHTML = '';
+  const overlay = refs.modal.querySelector('.film-info__overlay');
+  overlay.classList.remove('is-open');
+  refs.modal.innerHTML = '';
 }
 
 async function getFilmInfo() {
-    const response = await fetch(`${BASE_URL}/${filmId}?api_key=${API_KEY}`);
-    return response.json();
+  const response = await fetch(`${BASE_URL}/${filmId}?api_key=${API_KEY}`);
+  return response.json();
 }
 
 async function createModal() {
-    const filmInfo = await getFilmInfo();
-    console.log(filmInfo);
-    const genres = filmInfo.genres.map(genre => genre.name).join(', ');
+  const filmInfo = await getFilmInfo();
+  console.log(filmInfo);
+  const genres = filmInfo.genres.map(genre => genre.name).join(', ');
 
-    const modal = `
+  const modal = `
 <div class="film-info__overlay">
     <div class="film-info__container">
         <div class="film-info__poster">
@@ -86,11 +86,11 @@ async function createModal() {
 </div>
     `;
 
-    refs.modal.innerHTML = modal;
+  refs.modal.innerHTML = modal;
 
-    const overlay = refs.modal.querySelector('.film-info__overlay');
-    const closeButton = refs.modal.querySelector('.film-info__close-button');
+  const overlay = refs.modal.querySelector('.film-info__overlay');
+  const closeButton = refs.modal.querySelector('.film-info__close-button');
 
-    overlay.classList.add('is-open');
-    closeButton.addEventListener('click', onCloseButtonClick);
+  overlay.classList.add('is-open');
+  closeButton.addEventListener('click', onCloseButtonClick);
 }

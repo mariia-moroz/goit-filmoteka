@@ -16,15 +16,8 @@
     </nav>
     <div class="search-field" data-action="search-field">
       <form class="search-field__form">
-        <input
-          class="search-field__input"
-          placeholder="Поиск фильмов"
-          type="text"
-          name="search"
-          id="search"
-          autocomplete="off"
-          data-action="search-input"
-        />
+        <input class="search-field__input" placeholder="Поиск фильмов" type="text" name="search" id="search"
+          autocomplete="off" data-action="search-input" />
         <button class="search-field__btn" data-action="search-btn" type="submit">
           <svg width="12px" height="12px" class="search-field__icon">
             <use href="/images/sprite.svg#search"></use>
@@ -40,5 +33,14 @@
         <button type="button" class="library-button">Queue</button>
       </li>
     </ul>
+    <!-- Theme Switcher  -->
+    <div class="switcher">
+      <input type="checkbox" class="checkbox" id="checkbox">
+      <label for="checkbox" class="label">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="ball"></div>
+      </label>
+    </div>
   </div>
 </header>

@@ -1,10 +1,11 @@
 import getData from './getData';
 import notiflix from './notiflix';
+import { addToLocalStore } from './add-to-watched';
 
 const refs = {
-    movieContainer: document.querySelector('.movies'),
-    modal: document.querySelector('.film-info__overlay'),
-}
+  movieContainer: document.querySelector('.movies'),
+  modal: document.querySelector('.film-info__overlay'),
+};
 
 const options = {
   root: null,
@@ -34,8 +35,8 @@ function onMovieCardClick(e) {
 }
 
 function hasSomeParentTheClass(element, classname) {
-    if (element.classList?.contains(classname)) return element;
-    return element.parentNode && hasSomeParentTheClass(element.parentNode, classname);
+  if (element.classList?.contains(classname)) return element;
+  return element.parentNode && hasSomeParentTheClass(element.parentNode, classname);
 }
 
 async function getFilmInfo() {
@@ -54,7 +55,6 @@ async function getFilmInfo() {
     options.img_base_url = data.images.secure_base_url;
 
     createModal(options);
-
   } catch (error) {
     notiflix.onError();
     console.error('error is: ', error);
@@ -112,7 +112,7 @@ function createModal({ filmInfo, img_base_url }) {
           <h3 class="film-info__description-title">About</h3>
           <p class="film-info__description">${filmInfo.overview}</p>
           <div class="film-info__buttons">
-            <button class="film-info__button film-info__button--accent">add to watched</button>
+            <button class="film-info__button film-info__button--watched film-info__button--accent">add to watched</button>
             <button class="film-info__button film-info__button--simple">add to queue</button>
           </div>
         </div>
@@ -129,7 +129,7 @@ function createModal({ filmInfo, img_base_url }) {
   document.body.classList.add('is-open');
   closeButton.addEventListener('click', onCloseButtonClick);
   window.addEventListener('keydown', onKeyboardCloseModal);
-
+  addToLocalStore(filmInfo);
   if (options.root.classList.contains('dark-modal')) {
     modalContainer.classList.add('dark');
   }

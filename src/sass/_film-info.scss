@@ -191,6 +191,10 @@ body.is-open {
 
 .film-info__properties .simple {
     background-color: $secondary-white-color;
+
+    .film-info__container.dark & {
+        color: $accent-color;
+    }
 }
 
 .film-info__description-title, 
@@ -293,4 +297,8 @@ body.is-open {
     background-image: url('../images/close.svg');
     background-color: transparent;
     border: none;
+
+    .film-info__container.dark & {
+        background-image: url('../images/close-light.svg');
+    }
 }

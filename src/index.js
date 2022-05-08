@@ -5,4 +5,6 @@ import './js/fetch-by-name';
 import './js/filmInfoModalCreate';
 import '@fortawesome/fontawesome-free/js/all.js';
 import './js/theme-switcher';
+import './js/footerModalOpen';
+import './js/pagination'
 showMovieGallery();

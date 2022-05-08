@@ -15,16 +15,19 @@
 }
 
 .movies{
-
-display: flex;
-flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 @media screen and (min-width: 767px){
     display: flex;
     flex-wrap: wrap;
     flex-direction: unset;
+    padding-top: 60px;
 }
 @media screen and (min-width: 1024px){
     display: flex;
+    padding-bottom: 15px;
  
 }
 }

@@ -123,9 +123,14 @@ function createModal({ filmInfo, img_base_url }) {
   options.root.innerHTML = modal;
 
   const closeButton = options.root.querySelector('.film-info__close-button');
+  const modalContainer = options.root.querySelector('.film-info__container');
 
   options.root.classList.add('is-open');
   document.body.classList.add('is-open');
   closeButton.addEventListener('click', onCloseButtonClick);
   window.addEventListener('keydown', onKeyboardCloseModal);
+
+  if (options.root.classList.contains('dark-modal')) {
+    modalContainer.classList.add('dark');
+  }
 }

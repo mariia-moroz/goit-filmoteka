@@ -33,4 +33,17 @@ import Pagination from 'tui-pagination';
  
   const pagination = new Pagination('pagination', options);
 
- 
+ const Tuifirst = document.querySelector(".tui-first")
+ console.log(Tuifirst.textContent)
+//  Tuifirst.textContent = "1"
+//  console.log(Tuifirst)
+
+
+ const tiuFirstIcon = document.createElement("p");
+console.log(tiuFirstIcon); // <h1></h1>
+
+tiuFirstIcon.textContent = "1";
+tiuFirstIcon.classList.add("ico-first")
+console.log(tiuFirstIcon); // <h1>This is a heading</h1>
+Tuifirst.append(tiuFirstIcon)
+

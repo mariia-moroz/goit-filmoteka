@@ -116,21 +116,21 @@ function createModal({ filmInfo, img_base_url }) {
             <button class="film-info__button film-info__button--simple">add to queue</button>
           </div>
         </div>
-        <button type="button" class="film-info__close-button">
-          <svg class="film-info__close-icon" width="30" height="30">
-            <use href="./images/sprite.svg#close"></use>
-          </svg>
-        </button>
+        <button type="button" class="film-info__close-button"></button>
     </div>
     `;
 
   options.root.innerHTML = modal;
 
   const closeButton = options.root.querySelector('.film-info__close-button');
+  const modalContainer = options.root.querySelector('.film-info__container');
 
   options.root.classList.add('is-open');
   document.body.classList.add('is-open');
   closeButton.addEventListener('click', onCloseButtonClick);
   window.addEventListener('keydown', onKeyboardCloseModal);
   addToLocalStore(filmInfo);
+  if (options.root.classList.contains('dark-modal')) {
+    modalContainer.classList.add('dark');
+  }
 }

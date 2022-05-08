@@ -1,7 +1,6 @@
 .header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(../images/bg_header.jpg);
-
   width: 100%;
   height: 230px;
   min-width: 320px;
@@ -10,7 +9,10 @@
 
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top;
+}
+
+.header-home {
   @media screen and (max-width: 767px) {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/bg_header-mobile.jpg');
@@ -53,11 +55,11 @@
 
 .logo__icon {
   justify-self: middle;
-  margin-right: 10px;
 }
 
 .logo__text {
   display: none;
+
   font-family: Roboto;
   font-size: 30px;
   font-weight: 500;
@@ -65,12 +67,10 @@
   letter-spacing: 0em;
   text-align: center;
 
-  margin: 0;
-  padding: 0;
-
   color: $primary-white-color;
   @media screen and (min-width: 768px) {
     display: inline-block;
+    margin-left: 10px;
   }
 }
 

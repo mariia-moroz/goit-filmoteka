@@ -1,6 +1,7 @@
 // import './sass/main.scss';
-import renderFilmCard from './renderFilmCard';
+import renderPopularFilmCards from './renderPopularFilmCards';
 import getData from './getData';
+import { getBaseUrl, getPosterSize } from './configuration';
 
 const options = {
   root: null,
@@ -30,14 +31,8 @@ async function renderPopFilms() {
     console.error('error is: ', error);
   }
 
-  //---getting base url to build full url for images
-  try {
-    const { data } = await getData(options.configUrl + options.key);
-    options.base_url = data.images.base_url;
-    options.backdrop_sizes = data.images.backdrop_sizes;
-  } catch (error) {
-    console.error('error is: ', error);
-  }
+  options.base_url = getBaseUrl();
+  options.poster_size = getPosterSize();
 
   //---getting array of genres
   try {
@@ -51,5 +46,5 @@ async function renderPopFilms() {
   console.log(options);
 
   //---rendering every card
-  renderFilmCard(options);
+  renderPopularFilmCards(options);
 }

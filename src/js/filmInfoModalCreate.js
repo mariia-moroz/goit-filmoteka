@@ -1,7 +1,7 @@
 import getData from './getData';
 import notiflix from './notiflix';
 import { addToLocalStore } from './add-to-watched';
-import { getBaseUrl } from './configuration';
+import configuration from './configuration';
 
 const refs = {
   movieContainer: document.querySelector('.movies'),
@@ -42,7 +42,7 @@ function hasSomeParentTheClass(element, classname) {
 async function getFilmInfo() {
   notiflix.onLoadingleAdd();
 
-  options.img_base_url = getBaseUrl();
+  options.img_base_url = configuration.base_url;
   
   try {
     const { data } = await getData(options.filmInfoUrl + options.key);

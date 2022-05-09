@@ -1,7 +1,9 @@
 // import './sass/main.scss';
-import renderFilmCard from './renderFilmCard';
+import renderPopularFilmCards from './renderPopularFilmCards';
 import getData from './getData';
 import { Pagination } from 'tui-pagination';
+import saveConfiguration from './saveConfiguration';
+import configuration from './configuration';
 
 const options = {
   root: null,
@@ -11,6 +13,7 @@ const options = {
   poster_size: '',
   backdrop_sizes: [],
   genres: [],
+  page: 1,
   popularFilmsUrl: 'https://api.themoviedb.org/3/trending/movie/week?',
   configUrl: 'https://api.themoviedb.org/3/configuration?',
   genresUrl: 'https://api.themoviedb.org/3/genre/movie/list?',
@@ -22,23 +25,21 @@ export default function showMovieGallery() { Pagination
   renderPopFilms();
 }
 
-async function renderPopFilms() {
+export async function renderPopFilms(newPage = 1) {
+  //---clear root from a previous rendering
+  options.root.innerHTML = '';
   //---getting array of films
+  options.page = newPage;
   try {
-    const { data } = await getData(options.popularFilmsUrl + options.key);
+    await saveConfiguration();
+    const { data } = await getData(options.popularFilmsUrl + options.key + '&page=' + options.page);
     options.searchResults = data;
   } catch (error) {
     console.error('error is: ', error);
   }
 
-  //---getting base url to build full url for images
-  try {
-    const { data } = await getData(options.configUrl + options.key);
-    options.base_url = data.images.base_url;
-    options.backdrop_sizes = data.images.backdrop_sizes;
-  } catch (error) {
-    console.error('error is: ', error);
-  }
+  options.base_url = configuration.base_url;
+  options.poster_size = configuration.poster_size;
 
   //---getting array of genres
   try {
@@ -49,8 +50,6 @@ async function renderPopFilms() {
     console.error('error is: ', error);
   }
 
-  console.log(options);
-
   //---rendering every card
-  renderFilmCard(options);
+  renderPopularFilmCards(options);
 }

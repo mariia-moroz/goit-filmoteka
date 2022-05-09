@@ -29,7 +29,6 @@ class Notification {
   onLoadingleAdd() {
     Notiflix.Loading.arrows('Please wait ...', this.options);
   }
-
   onLoadingRemove() {
     Notiflix.Loading.remove();
   }

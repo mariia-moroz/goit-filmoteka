@@ -7,28 +7,7 @@ const refs = {
   input: document.querySelector('[data-action="search-field"]'),
 };
 
-refs.navItems.addEventListener('click', onNavItemClick);
-refs.logo.addEventListener('click', onLogoClick);
-
-function onNavItemClick(e) {
-  if (e.target.innerText !== undefined && e.target.innerText.toLowerCase() === 'home') {
-    changeToHomeHeaderMarkup();
-  } else if (
-    e.target.innerText !== undefined &&
-    e.target.innerText.toLowerCase() === 'my library'
-  ) {
-    changeToLibraryHeaderMarkup();
-  }
-}
-
-function onLogoClick(e) {
-  console.log(e.currentTarget.classList.contains('logo'));
-  if (e.currentTarget.className !== undefined && e.currentTarget.className === 'logo') {
-    changeToHomeHeaderMarkup();
-  }
-}
-
-function changeToLibraryHeaderMarkup() {
+export function changeToLibraryHeaderMarkup() {
   //Подчеркивание елемента
   refs.navItems.lastElementChild.classList.add('nav__item--current');
   refs.navItems.firstElementChild.classList.remove('nav__item--current');
@@ -42,7 +21,7 @@ function changeToLibraryHeaderMarkup() {
   refs.input.classList.add('visually-hidden');
 }
 
-function changeToHomeHeaderMarkup() {
+export function changeToHomeHeaderMarkup() {
   refs.navItems.firstElementChild.classList.add('nav__item--current');
   refs.navItems.lastElementChild.classList.remove('nav__item--current');
   //Задний фон

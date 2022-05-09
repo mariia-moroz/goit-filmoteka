@@ -21,7 +21,7 @@ options.root = document.querySelector('.movies');
 
 renderPopFilms();
 
-async function renderPopFilms() {
+export default async function renderPopFilms() {
   //---getting array of films
   try {
     await saveConfiguration();

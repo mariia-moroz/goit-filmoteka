@@ -238,22 +238,21 @@ body.is-open {
     font-weight: inherit;
     text-transform: uppercase;
     border-radius: 5px;
+    height: 44px;
+    padding-left: 8px;
+    padding-right: 8px;
 
     @media screen and (max-width: 767px) {
         width: 112px;
-        height: 44px;
-        padding-left: 8px;
-        padding-right: 8px;
     }
 
     @media screen and (min-width: 768px) {
-        min-width: 125px;
-        padding: 14px 8px 12px 8px;
+        width: 125px;
         margin-bottom: 40px;
     }
     
     @media screen and (min-width: 1024px) {
-        min-width: 136px;
+        width: 136px;
     }
 }
 

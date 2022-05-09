@@ -12,6 +12,7 @@ const options = {
   poster_size: '',
   backdrop_sizes: [],
   genres: [],
+  page: 1,
   popularFilmsUrl: 'https://api.themoviedb.org/3/trending/movie/week?',
   configUrl: 'https://api.themoviedb.org/3/configuration?',
   genresUrl: 'https://api.themoviedb.org/3/genre/movie/list?',
@@ -21,11 +22,14 @@ options.root = document.querySelector('.movies');
 
 renderPopFilms();
 
-export default async function renderPopFilms() {
+export default async function renderPopFilms(newPage = 1) {
+  //---clear root from a previous rendering
+  options.root.innerHTML = '';
   //---getting array of films
+  options.page = newPage;
   try {
     await saveConfiguration();
-    const { data } = await getData(options.popularFilmsUrl + options.key);
+    const { data } = await getData(options.popularFilmsUrl + options.key + '&page=' + options.page);
     options.searchResults = data;
   } catch (error) {
     console.error('error is: ', error);

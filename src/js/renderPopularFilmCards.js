@@ -1,10 +1,10 @@
 import renderFilmCard from './renderFilmCard';
 
 export default function renderPopularFilmCards(options) {
-  const { searchResults, poster_size, genres } = options;
+  const { searchResults, genres } = options;
   const { results } = searchResults;
 
-  results.forEach((movie) => {
+  results.forEach(movie => {
     const { genre_ids } = movie;
     let genresList = [];
     for (let genre_id in genre_ids) {
@@ -18,11 +18,9 @@ export default function renderPopularFilmCards(options) {
     const data_options = {
       ...options,
       movie,
-      genresList
-    }
+      genresList,
+    };
 
     renderFilmCard(data_options);
-
-  })
+  });
 }
-

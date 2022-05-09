@@ -1,8 +1,11 @@
-import axios from 'axios';
 import createModal from './filmInfoModalCreate';
 let dataWatched = [];
-const KEY_WATCHED = 'Watched';
-const KEY_QUEUE = 'Queue';
+export const KEY_WATCHED = 'Watched';
+export const KEY_QUEUE = 'Queue';
+const textAddWatch = 'add to watched';
+const textAddQueue = 'add to queue';
+const textDelWatch = 'delete watched';
+const textDelQueue = 'delete queue';
 // export function addToLocalStore(id) {
 //   const watchedAdd = document.querySelector('.film-info__button--watched');
 //   console.log(watchedAdd);
@@ -27,10 +30,16 @@ const KEY_QUEUE = 'Queue';
 
 export function addToLocalStore(data) {
   const watchedAdd = document.querySelector('.film-info__button--watched');
-  watchedAdd.addEventListener('click', onClickWatched);
-  function onClickWatched() {
-    if (localStorage[KEY_WATCHED] !== undefined) {
-      dataWatched = JSON.parse(localStorage[KEY_WATCHED]);
+  watchedAdd.addEventListener('click', () =>
+    onClickWatched(KEY_WATCHED, textAddWatch, textDelWatch, watchedAdd),
+  );
+  const queueAdd = document.querySelector('.film-info__button--queue');
+  queueAdd.addEventListener('click', () =>
+    onClickWatched(KEY_QUEUE, textAddQueue, textDelQueue, queueAdd),
+  );
+  function onClickWatched(KEY, textAdd, textDel, targetAdd) {
+    if (localStorage[KEY] !== undefined) {
+      dataWatched = JSON.parse(localStorage[KEY]);
     }
     // watchedAdd.innerText = 'delete from watched';
     watchedAdd.classList.add('delete');
@@ -39,20 +48,20 @@ export function addToLocalStore(data) {
     const localFilmId = dataWatched.flatMap(dataWatched => dataWatched.id);
 
     localFilmId.findIndex(e => e === data.id) === -1
-      ? (watchedAdd.innerText = 'delete from watched')
-      : (watchedAdd.innerText = 'add to watched');
+      ? (targetAdd.innerText = textDel)
+      : (targetAdd.innerText = textAdd);
 
     if (localFilmId.findIndex(e => e === data.id) === -1) {
       dataWatched.push(data);
-      localStorage.setItem(KEY_WATCHED, JSON.stringify(dataWatched));
+      localStorage.setItem(KEY, JSON.stringify(dataWatched));
     } else {
       // delete from localstorage
       dataWatched.splice(
         localFilmId.findIndex(e => e === data.id),
         1,
       );
-      localStorage.removeItem(KEY_WATCHED);
-      localStorage.setItem(KEY_WATCHED, JSON.stringify(dataWatched));
+      localStorage.removeItem(KEY);
+      localStorage.setItem(KEY, JSON.stringify(dataWatched));
     }
     dataWatched = [];
   }

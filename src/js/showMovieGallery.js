@@ -1,6 +1,7 @@
 // import './sass/main.scss';
 import renderPopularFilmCards from './renderPopularFilmCards';
 import getData from './getData';
+import { Pagination } from 'tui-pagination';
 import saveConfiguration from './saveConfiguration';
 import configuration from './configuration';
 
@@ -20,9 +21,11 @@ const options = {
 
 options.root = document.querySelector('.movies');
 
-renderPopFilms();
+export default function showMovieGallery() { Pagination
+  renderPopFilms();
+}
 
-export default async function renderPopFilms(newPage = 1) {
+export async function renderPopFilms(newPage = 1) {
   //---clear root from a previous rendering
   options.root.innerHTML = '';
   //---getting array of films

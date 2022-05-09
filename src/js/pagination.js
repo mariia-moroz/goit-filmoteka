@@ -1,13 +1,13 @@
 // import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
-
-
+import showMovieGallery from './showMovieGallery';
 
     const options = {
-        totalItems: 20,
-        itemsPerPage: 2,
-        visiblePages: 5,
-        page: 1,
+        totalItems: 200,
+        visiblePages: 5,    
+        itemsPerPage: 20,
+        page: getPage(),
+        usageStatistics: false,
         centerAlign: true,
         firstItemClassName: 'tui-first-child',
         lastItemClassName: 'tui-last-child',
@@ -32,16 +32,23 @@ import Pagination from 'tui-pagination';
 
 const pagination = new Pagination('pagination', options);
 
-const Tuifirst = document.querySelector(".tui-first")
-console.log(Tuifirst.textContent)
-//  Tuifirst.textContent = "1"
-//  console.log(Tuifirst)
+// внесення номеру сторінки в local Storage
+
+pagination.on('afterMove', (event) => {
+  console.log(event)
+  const currentPage = event.page;
+  localStorage.setItem("pagination-page", JSON.stringify(currentPage))
+  showMovieGallery();
+});
+
+// забираємо з local Storage номер сторінки
+function getPage () {const paginationData = localStorage.getItem("pagination-page");
+if(paginationData) {
+   const pageFromLS = JSON.parse(paginationData);
+  return pageFromLS}
+else {
+return 1}
+}
 
 
-const tiuFirstIcon = document.createElement("p");
-console.log(tiuFirstIcon); // <h1></h1>
-
-tiuFirstIcon.textContent = "1";
-tiuFirstIcon.classList.add("ico-first")
-console.log(tiuFirstIcon); // <h1>This is a heading</h1>
-Tuifirst.append(tiuFirstIcon)
+console.log(pagination)

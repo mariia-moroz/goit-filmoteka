@@ -1,6 +1,7 @@
 // import './sass/main.scss';
 import renderFilmCard from './renderFilmCard';
 import getData from './getData';
+import { Pagination } from 'tui-pagination';
 
 const options = {
   root: null,
@@ -17,7 +18,7 @@ const options = {
 
 options.root = document.querySelector('.movies');
 
-export default function showMovieGallery() {
+export default function showMovieGallery() { Pagination
   renderPopFilms();
 }
 

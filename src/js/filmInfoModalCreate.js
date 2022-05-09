@@ -1,6 +1,7 @@
 import getData from './getData';
 import notiflix from './notiflix';
 import { addToLocalStore } from './add-to-watched';
+import configuration from './configuration';
 
 const refs = {
   movieContainer: document.querySelector('.movies'),
@@ -14,7 +15,6 @@ const options = {
   filmInfo: {},
   img_base_url: 'none',
   poster_size: '',
-  backdrop_sizes: [],
   baseUrl: 'https://api.themoviedb.org/3/movie/',
   filmInfoUrl: '',
   configUrl: 'https://api.themoviedb.org/3/configuration?',
@@ -42,19 +42,14 @@ function hasSomeParentTheClass(element, classname) {
 async function getFilmInfo() {
   notiflix.onLoadingleAdd();
 
+  options.img_base_url = configuration.base_url;
+  
   try {
     const { data } = await getData(options.filmInfoUrl + options.key);
     options.filmInfo = data;
-  } catch (error) {
-    notiflix.onError();
-    console.error('error is: ', error);
-  }
-
-  try {
-    const { data } = await getData(options.configUrl + options.key);
-    options.img_base_url = data.images.secure_base_url;
-
+    
     createModal(options);
+
   } catch (error) {
     notiflix.onError();
     console.error('error is: ', error);

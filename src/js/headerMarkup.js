@@ -1,5 +1,3 @@
-import onWatchedBtnClick from './onWatchedBtnClick';
-
 const refs = {
   logo: document.querySelector('.logo'),
   navItems: document.querySelector('.nav__list'),
@@ -10,7 +8,6 @@ const refs = {
 };
 
 export function changeToLibraryHeaderMarkup() {
-  onWatchedBtnClick();
   //Подчеркивание елемента
   refs.navItems.lastElementChild.classList.add('nav__item--current');
   refs.navItems.firstElementChild.classList.remove('nav__item--current');

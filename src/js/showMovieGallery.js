@@ -22,8 +22,11 @@ options.root = document.querySelector('.movies');
 
 renderPopFilms();
 
-export default async function renderPopFilms() {
+export default async function renderPopFilms(newPage = 1) {
+  //---clear root from a previous rendering
+  options.root.innerHTML = '';
   //---getting array of films
+  options.page = newPage;
   try {
     await saveConfiguration();
     const { data } = await getData(options.popularFilmsUrl + options.key + '&page=' + options.page);

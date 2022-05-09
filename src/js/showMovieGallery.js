@@ -12,6 +12,7 @@ const options = {
   poster_size: '',
   backdrop_sizes: [],
   genres: [],
+  page: 1,
   popularFilmsUrl: 'https://api.themoviedb.org/3/trending/movie/week?',
   configUrl: 'https://api.themoviedb.org/3/configuration?',
   genresUrl: 'https://api.themoviedb.org/3/genre/movie/list?',
@@ -25,7 +26,7 @@ export default async function renderPopFilms() {
   //---getting array of films
   try {
     await saveConfiguration();
-    const { data } = await getData(options.popularFilmsUrl + options.key);
+    const { data } = await getData(options.popularFilmsUrl + options.key + '&page=' + options.page);
     options.searchResults = data;
   } catch (error) {
     console.error('error is: ', error);

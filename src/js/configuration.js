@@ -1,6 +1,6 @@
 const configuration = {
-    base_url: '',
-    poster_size: ''
+  base_url: '',
+  poster_size: '',
 };
 
 export default configuration;

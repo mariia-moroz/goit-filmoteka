@@ -1,7 +1,8 @@
 // import './sass/main.scss';
 import renderPopularFilmCards from './renderPopularFilmCards';
 import getData from './getData';
-import { getBaseUrl, getPosterSize } from './configuration';
+import saveConfiguration from './saveConfiguration';
+import configuration from './configuration';
 
 const options = {
   root: null,
@@ -18,21 +19,20 @@ const options = {
 
 options.root = document.querySelector('.movies');
 
-export default function showMovieGallery() {
-  renderPopFilms();
-}
+renderPopFilms();
 
 async function renderPopFilms() {
   //---getting array of films
   try {
+    await saveConfiguration();
     const { data } = await getData(options.popularFilmsUrl + options.key);
     options.searchResults = data;
   } catch (error) {
     console.error('error is: ', error);
   }
 
-  options.base_url = getBaseUrl();
-  options.poster_size = getPosterSize();
+  options.base_url = configuration.base_url;
+  options.poster_size = configuration.poster_size;
 
   //---getting array of genres
   try {
@@ -42,8 +42,6 @@ async function renderPopFilms() {
   } catch (error) {
     console.error('error is: ', error);
   }
-
-  console.log(options);
 
   //---rendering every card
   renderPopularFilmCards(options);

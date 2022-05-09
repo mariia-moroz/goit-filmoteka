@@ -2,6 +2,7 @@ import Notiflix from 'notiflix';
 const notiflixParams = {
   position: 'center-top',
   timeout: 1500,
+  showOnlyTheLastOne: true,
 };
 
 class Notification {
@@ -30,6 +31,10 @@ class Notification {
   }
   onLoadingRemove() {
     Notiflix.Loading.remove();
+  }
+
+  onError() {
+    Notiflix.Notify.failure('Sorry, something went wrong :(', this.options);
   }
 }
 

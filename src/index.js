@@ -9,4 +9,3 @@ import './js/pagination';
 import '@fortawesome/fontawesome-free/js/all.js';
 import './js/theme-switcher';
 showMovieGallery();
-import './js/UDOLI_renderWatch';

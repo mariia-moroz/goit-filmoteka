@@ -1,28 +1,30 @@
 import createModal from './filmInfoModalCreate';
 let dataWatched = [];
+export let textBtnWatched;
+export let textBtnQueue;
 export const KEY_WATCHED = 'Watched';
 export const KEY_QUEUE = 'Queue';
-const textAddWatch = 'add to watched';
-const textAddQueue = 'add to queue';
-const textDelWatch = 'delete watched';
-const textDelQueue = 'delete queue';
+const textBtnModal = {
+  textAddWatch: 'add to watched',
+  textAddQueue: 'add to queue',
+  textDelWatch: 'delete from watched',
+  textDelQueue: 'delete from queue',
+};
 
 export function addToLocalStore(data) {
   const watchedAdd = document.querySelector('.film-info__button--watched');
   watchedAdd.addEventListener('click', () =>
-    onClickWatched(KEY_WATCHED, textAddWatch, textDelWatch, watchedAdd),
+    onClickBtnModal(KEY_WATCHED, textBtnModal.textAddWatch, textBtnModal.textDelWatch, watchedAdd),
   );
   const queueAdd = document.querySelector('.film-info__button--queue');
   queueAdd.addEventListener('click', () =>
-    onClickWatched(KEY_QUEUE, textAddQueue, textDelQueue, queueAdd),
+    onClickBtnModal(KEY_QUEUE, textBtnModal.textAddQueue, textBtnModal.textDelQueue, queueAdd),
   );
-  function onClickWatched(KEY, textAdd, textDel, targetAdd) {
+  function onClickBtnModal(KEY, textAdd, textDel, targetAdd) {
     if (localStorage[KEY] !== undefined) {
       dataWatched = JSON.parse(localStorage[KEY]);
     }
-    // watchedAdd.innerText = 'delete from watched';
-    watchedAdd.classList.add('delete');
-    console.log(data.id);
+
     //  перевірка чи є фільм в watched
     const localFilmId = dataWatched.flatMap(dataWatched => dataWatched.id);
 
@@ -44,4 +46,22 @@ export function addToLocalStore(data) {
     }
     dataWatched = [];
   }
+}
+
+export function filmCheckLS(data) {
+  function readLocalId(KEY, textDel, textAdd) {
+    if (localStorage[KEY] !== undefined) {
+      dataWatched = JSON.parse(localStorage[KEY]);
+      const localFilmId = dataWatched.flatMap(dataWatched => dataWatched.id);
+      let result;
+      localFilmId.findIndex(e => e === data.id) === -1 ? (result = textAdd) : (result = textDel);
+      return result;
+    } else {
+      textAdd;
+      return textAdd;
+    }
+  }
+  textBtnWatched = readLocalId(KEY_WATCHED, textBtnModal.textDelWatch, textBtnModal.textAddWatch);
+  textBtnQueue = readLocalId(KEY_QUEUE, textBtnModal.textDelQueue, textBtnModal.textAddQueue);
+  return textBtnQueue, textBtnWatched;
 }

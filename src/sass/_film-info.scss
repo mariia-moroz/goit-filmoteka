@@ -266,7 +266,9 @@ body.is-open {
     background-color $transition-duration $transition-timing-function;
 
     &:hover,
-    &:focus {
+    &:focus,
+    .film-info__container.dark &:hover,
+    .film-info__container.dark &:focus {
         border-color: #E35F00;
         background-color: #E35F00;
     }
@@ -274,15 +276,27 @@ body.is-open {
 
 .film-info__button--simple {
     border: 1px solid $primary-text-color;
-    background-color: $primary-white-color;
+    background-color: transparent;
 
     transition: border-color $transition-duration $transition-timing-function,
     color $transition-duration $transition-timing-function;
+
+    .film-info__container.dark & {
+        border-color: $primary-white-color;
+        color: $primary-white-color;
+    }
 
     &:hover,
     &:focus {
         border-color: $accent-color;
         color: $accent-color;
+    }
+
+    .film-info__container.dark &:hover,
+    .film-info__container.dark &:focus {
+        border-color: $accent-color;
+        color: $accent-color;
+        background-color: rgba(255, 107, 1, 0.1);
     }
 }
 

@@ -1,4 +1,3 @@
-// import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
 import renderPopFilms from './showMovieGallery';
 
@@ -33,21 +32,16 @@ const pagination = new Pagination('pagination', options);
 
 export { pagination }
 
-document.querySelector('.tui-ico-first').textContent = '1';
-document.querySelector('.tui-ico-last').textContent = '1000';
-
 // внесення номеру сторінки в local Storage
 
 pagination.on('afterMove', onPaginationClick);
 
 function onPaginationClick(event) {
-  document.querySelector('.tui-ico-first').textContent = '1';
   const currentPage = event.page;
   localStorage.setItem('pagination-page', JSON.stringify(currentPage));
   
   console.log(currentPage)
   renderPopFilms();
-  document.querySelector('.tui-ico-last').textContent = localStorage.getItem('total_pages');
 }
 
 // забираємо з local Storage номер сторінки

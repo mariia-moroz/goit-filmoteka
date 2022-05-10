@@ -32,6 +32,9 @@ const pagination = new Pagination('pagination', options);
 
 export { pagination }
 
+document.querySelector('.tui-ico-first').textContent = '1';
+document.querySelector('.tui-ico-last').textContent = '1000';
+
 // внесення номеру сторінки в local Storage
 
 pagination.on('afterMove', onPaginationClick);
@@ -39,8 +42,6 @@ pagination.on('afterMove', onPaginationClick);
 function onPaginationClick(event) {
   const currentPage = event.page;
   localStorage.setItem('pagination-page', JSON.stringify(currentPage));
-  
-  console.log(currentPage)
   renderPopFilms();
 }
 

@@ -8,6 +8,7 @@ const refs = {
 
 refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
 refs.queueBtn.addEventListener('click', onQueueBtnClick);
+document.addEventListener('click', dynamicLibraryMarkup);
 
 const options = {
   root: refs.container,
@@ -19,7 +20,8 @@ const options = {
 
 export function onWatchedBtnClick() {
   clearContainer();
-  refs.watchedBtn.classList.add('active-library-button');
+
+  watchedBtnToggle();
 
   const watchedFilms = JSON.parse(localStorage.getItem('Watched'));
 
@@ -34,7 +36,7 @@ export function onWatchedBtnClick() {
 
 function onQueueBtnClick() {
   clearContainer();
-  refs.watchedBtn.classList.remove('active-library-button');
+  queueBtnToggle();
 
   const queueFilms = JSON.parse(localStorage.getItem('Queue'));
 
@@ -48,7 +50,37 @@ function onQueueBtnClick() {
 }
 
 function dynamicLibraryMarkup(e) {
-  console.log(e.target.innertext);
+  if (e.target.nodeName !== 'BUTTON') {
+    return;
+  }
+  //Проверяем если открыта вкладка Watched, динамически меняем разметку в этой вкладке при удалении фильма
+  if (
+    (refs.watchedBtn.classList.contains('active-library-button') &&
+      e.target.innerText === 'ADD TO WATCHED') ||
+    (refs.watchedBtn.classList.contains('active-library-button') &&
+      e.target.innerText === 'DELETE FROM WATCHED')
+  ) {
+    onWatchedBtnClick();
+  }
+  //Проверяем если открыта вкладка Queue, динамически меняем разметку в этой вкладке при удалении фильма
+  if (
+    (refs.queueBtn.classList.contains('active-library-button') &&
+      e.target.innerText === 'ADD TO QUEUE') ||
+    (refs.queueBtn.classList.contains('active-library-button') &&
+      e.target.innerText === 'DELETE FROM QUEUE')
+  ) {
+    onQueueBtnClick();
+  }
+}
+
+function queueBtnToggle() {
+  refs.watchedBtn.classList.remove('active-library-button');
+  refs.queueBtn.classList.add('active-library-button');
+}
+
+export function watchedBtnToggle() {
+  refs.watchedBtn.classList.add('active-library-button');
+  refs.queueBtn.classList.remove('active-library-button');
 }
 
 function clearContainer() {

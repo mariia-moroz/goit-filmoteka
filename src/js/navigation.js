@@ -28,7 +28,6 @@ function onNavItemClick(e) {
 }
 
 function onLogoClick(e) {
-  console.log(e.currentTarget.classList.contains('logo'));
   if (e.currentTarget.className !== undefined && e.currentTarget.className === 'logo') {
     renderPopFilms();
     clearContainer();

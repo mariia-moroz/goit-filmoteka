@@ -1,14 +1,15 @@
 import renderFilmCard from './renderFilmCard';
+import notiflix from './notiflix';
 
 const refs = {
   watchedBtn: document.querySelector('.library-button--watched'),
   queueBtn: document.querySelector('.library-button--queue'),
   container: document.querySelector('.movies'),
+  slider: document.querySelector('.slider'),
 };
 
 refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
 refs.queueBtn.addEventListener('click', onQueueBtnClick);
-document.addEventListener('click', dynamicLibraryMarkup);
 
 const options = {
   root: refs.container,
@@ -19,19 +20,21 @@ const options = {
 };
 
 export function onWatchedBtnClick() {
+  document.addEventListener('click', dynamicLibraryMarkup);
+
   clearContainer();
 
   watchedBtnToggle();
 
   const watchedFilms = JSON.parse(localStorage.getItem('Watched'));
 
-  if (watchedFilms !== null)
-    watchedFilms.forEach(film => {
-      options.genresList = film.genres.map(genre => genre.name);
-      options.movie = film;
-
-      renderFilmCard(options);
-    });
+  if (watchedFilms == '') {
+    return notiflix.onNoAddedFilms();
+  }
+  watchedFilms.forEach(film => {
+    options.genresList = film.genres.map(genre => genre.name);
+    options.movie = film;
+  });
 }
 
 function onQueueBtnClick() {
@@ -40,13 +43,15 @@ function onQueueBtnClick() {
 
   const queueFilms = JSON.parse(localStorage.getItem('Queue'));
 
-  if (queueFilms !== null)
-    queueFilms.forEach(film => {
-      options.genresList = film.genres.map(genre => genre.name);
-      options.movie = film;
+  if (queueFilms == '') {
+    return notiflix.onNoAddedFilms();
+  }
+  queueFilms.forEach(film => {
+    options.genresList = film.genres.map(genre => genre.name);
+    options.movie = film;
 
-      renderFilmCard(options);
-    });
+    renderFilmCard(options);
+  });
 }
 
 function dynamicLibraryMarkup(e) {
@@ -78,9 +83,18 @@ function queueBtnToggle() {
   refs.queueBtn.classList.add('active-library-button');
 }
 
-export function watchedBtnToggle() {
+function watchedBtnToggle() {
   refs.watchedBtn.classList.add('active-library-button');
   refs.queueBtn.classList.remove('active-library-button');
+}
+
+export function queueBtnToggleOff() {
+  refs.queueBtn.classList.remove('active-library-button');
+}
+
+export function watchedBtnToggleOff() {
+  refs.watchedBtn.classList.remove('active-library-button');
+  console.log(1);
 }
 
 function clearContainer() {

@@ -32,6 +32,9 @@ class Notification {
   onLoadingRemove() {
     Notiflix.Loading.remove();
   }
+  onNoAddedFilms() {
+    Notiflix.Notify.warning('Oops, you did not add anything', this.options);
+  }
 
   onError() {
     Notiflix.Notify.failure('Sorry, something went wrong :(', this.options);

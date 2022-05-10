@@ -1,4 +1,5 @@
 import renderFilmCard from './renderFilmCard';
+import notiflix from './notiflix';
 
 const refs = {
   watchedBtn: document.querySelector('.library-button--watched'),
@@ -27,13 +28,13 @@ export function onWatchedBtnClick() {
 
   const watchedFilms = JSON.parse(localStorage.getItem('Watched'));
 
-  if (watchedFilms !== null)
-    watchedFilms.forEach(film => {
-      options.genresList = film.genres.map(genre => genre.name);
-      options.movie = film;
-
-      renderFilmCard(options);
-    });
+  if (watchedFilms == '') {
+    return notiflix.onNoAddedFilms();
+  }
+  watchedFilms.forEach(film => {
+    options.genresList = film.genres.map(genre => genre.name);
+    options.movie = film;
+  });
 }
 
 function onQueueBtnClick() {
@@ -42,13 +43,15 @@ function onQueueBtnClick() {
 
   const queueFilms = JSON.parse(localStorage.getItem('Queue'));
 
-  if (queueFilms !== null)
-    queueFilms.forEach(film => {
-      options.genresList = film.genres.map(genre => genre.name);
-      options.movie = film;
+  if (queueFilms == '') {
+    return notiflix.onNoAddedFilms();
+  }
+  queueFilms.forEach(film => {
+    options.genresList = film.genres.map(genre => genre.name);
+    options.movie = film;
 
-      renderFilmCard(options);
-    });
+    renderFilmCard(options);
+  });
 }
 
 function dynamicLibraryMarkup(e) {

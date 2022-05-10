@@ -1,6 +1,6 @@
 import { changeToHomeHeaderMarkup } from './headerMarkup';
 import { changeToLibraryHeaderMarkup } from './headerMarkup';
-import onWatchedBtnClick from './onWatchedBtnClick';
+import { onWatchedBtnClick } from './libraryButtons';
 import renderPopFilms from './showMovieGallery';
 
 const refs = {

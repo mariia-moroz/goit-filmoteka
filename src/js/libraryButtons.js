@@ -9,9 +9,6 @@ const refs = {
 refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
 refs.queueBtn.addEventListener('click', onQueueBtnClick);
 
-const watchedFilms = JSON.parse(localStorage.getItem('Watched'));
-const queueFilms = JSON.parse(localStorage.getItem('Queue'));
-
 const options = {
   root: refs.container,
   poster_size: 'w342',
@@ -20,8 +17,12 @@ const options = {
   movie: '',
 };
 
-export default function onWatchedBtnClick() {
-  options.root.innerHTML = '';
+export function onWatchedBtnClick() {
+  clearContainer();
+  refs.watchedBtn.classList.add('active-library-button');
+
+  const watchedFilms = JSON.parse(localStorage.getItem('Watched'));
+
   if (watchedFilms !== null)
     watchedFilms.forEach(film => {
       options.genresList = film.genres.map(genre => genre.name);
@@ -32,7 +33,11 @@ export default function onWatchedBtnClick() {
 }
 
 function onQueueBtnClick() {
-  options.root.innerHTML = '';
+  clearContainer();
+  refs.watchedBtn.classList.remove('active-library-button');
+
+  const queueFilms = JSON.parse(localStorage.getItem('Queue'));
+
   if (queueFilms !== null)
     queueFilms.forEach(film => {
       options.genresList = film.genres.map(genre => genre.name);
@@ -40,4 +45,12 @@ function onQueueBtnClick() {
 
       renderFilmCard(options);
     });
+}
+
+function dynamicLibraryMarkup(e) {
+  console.log(e.target.innertext);
+}
+
+function clearContainer() {
+  options.root.innerHTML = '';
 }

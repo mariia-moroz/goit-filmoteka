@@ -27,13 +27,17 @@ export default function showMovieGallery() {
   renderPopFilms();
 }
 
-export async function renderPopFilms(newPage = 1) {
+export async function renderPopFilms() {
+  const paginationData = localStorage.getItem('pagination-page');
+  const pageFromLS = JSON.parse(paginationData);
+
+  if (pageFromLS) {
+    options.page = pageFromLS;
+  } 
+  
   //---clear root from a previous rendering
   options.root.innerHTML = '';
   //---getting array of films
-  const paginationData = localStorage.getItem('pagination-page');
-  const pageFromLS = JSON.parse(paginationData);
-  options.page = pageFromLS;
   try {
     await saveConfiguration();
     const { data } = await getData(options.popularFilmsUrl + options.key + '&page=' + options.page);

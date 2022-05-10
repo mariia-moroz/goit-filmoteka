@@ -13,3 +13,4 @@ import './js/theme-switcher';
 import './js/slider';
 import './js/libraryButtons';
 import './js/navigation';
+import './js/scroll-to-top';

@@ -11,9 +11,7 @@ export default function renderFilmCard({ root, base_url, poster_size, movie, gen
       />
       <h2 class="card-preview-info__name">${title}</h2>
       <div class="card-preview-info">
-        <p class="card-preview-info__data">${genresList.slice(0, 2).join(', ')} | ${parseInt(
-      release_date,
-    )}</p>
+        <p class="card-preview-info__data">${genresList.slice(0, 2).join(', ')} | ${parseInt(release_date)}</p>
         <span class="card-preview-info__rating">${vote_average}</span>
       </div>
     </div>`,

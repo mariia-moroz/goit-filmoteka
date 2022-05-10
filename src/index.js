@@ -12,3 +12,4 @@ import '@fortawesome/fontawesome-free/js/all.js';
 import './js/theme-switcher';
 import './js/onWatchedBtnClick';
 import './js/navigation';
+import './js/scroll-to-top';

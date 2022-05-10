@@ -77,7 +77,7 @@
 
     &:hover {
         color: $primary-white-color;
-        background-color: $secondary-white-color;
+        background-color: #E35F00;
     }
 }
 
@@ -93,10 +93,6 @@
 .tui-pagination .tui-prev-is-ellip,
 .tui-pagination .tui-next-is-ellip {
     overflow: hidden;
-    //  height: 26px;
-    //  padding: 0;
-    //  font-size: 0;
-    //  line-height: 26px;
     white-space: nowrap;
     font-weight: normal;
     border: 1px solid #ddd;

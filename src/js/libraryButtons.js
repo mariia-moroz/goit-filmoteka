@@ -4,11 +4,11 @@ const refs = {
   watchedBtn: document.querySelector('.library-button--watched'),
   queueBtn: document.querySelector('.library-button--queue'),
   container: document.querySelector('.movies'),
+  slider: document.querySelector('.slider'),
 };
 
 refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
 refs.queueBtn.addEventListener('click', onQueueBtnClick);
-document.addEventListener('click', dynamicLibraryMarkup);
 
 const options = {
   root: refs.container,
@@ -19,6 +19,8 @@ const options = {
 };
 
 export function onWatchedBtnClick() {
+  document.addEventListener('click', dynamicLibraryMarkup);
+
   clearContainer();
 
   watchedBtnToggle();
@@ -78,9 +80,18 @@ function queueBtnToggle() {
   refs.queueBtn.classList.add('active-library-button');
 }
 
-export function watchedBtnToggle() {
+function watchedBtnToggle() {
   refs.watchedBtn.classList.add('active-library-button');
   refs.queueBtn.classList.remove('active-library-button');
+}
+
+export function queueBtnToggleOff() {
+  refs.queueBtn.classList.remove('active-library-button');
+}
+
+export function watchedBtnToggleOff() {
+  refs.watchedBtn.classList.remove('active-library-button');
+  console.log(1);
 }
 
 function clearContainer() {

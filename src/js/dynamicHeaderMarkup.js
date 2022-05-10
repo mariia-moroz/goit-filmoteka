@@ -1,5 +1,3 @@
-import { watchedBtnToggle } from './libraryButtons';
-
 const refs = {
   logo: document.querySelector('.logo'),
   navItems: document.querySelector('.nav__list'),
@@ -34,5 +32,4 @@ export function changeToHomeHeaderMarkup() {
   //Рендерим поисковой инпут
   refs.input.classList.remove('visually-hidden');
   //Снимаем разметку нажатия с кнопки Queue в библиотеке при переходе на страничку home
-  watchedBtnToggle();
 }

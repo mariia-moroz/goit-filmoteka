@@ -2,7 +2,7 @@ import './sass/main.scss';
 import './js/configuration';
 import './js/saveConfiguration';
 import './js/showMovieGallery';
-import './js/headerMarkup';
+import './js/dynamicHeaderMarkup';
 import './js/fetch-by-name';
 import './js/filmInfoModalCreate';
 import './js/footerModalOpen';

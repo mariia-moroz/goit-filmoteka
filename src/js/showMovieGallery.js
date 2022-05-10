@@ -20,6 +20,7 @@ const options = {
 };
 
 options.root = document.querySelector('.movies');
+renderPopFilms();
 
 export default function showMovieGallery() { Pagination
   renderPopFilms();

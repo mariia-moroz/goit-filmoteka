@@ -19,6 +19,7 @@ const options = {
 };
 
 options.root = document.querySelector('.movies');
+renderPopFilms();
 
 
 

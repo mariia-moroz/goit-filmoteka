@@ -1,10 +1,14 @@
 import getData from './getData';
 import notiflix from './notiflix';
-
+import { addToLocalStore } from './add-to-watched';
+import configuration from './configuration';
+import { filmCheckLS } from './add-to-watched';
+import { textBtnQueue } from './add-to-watched';
+import { textBtnWatched } from './add-to-watched';
 const refs = {
-    movieContainer: document.querySelector('.movies'),
-    modal: document.querySelector('.film-info__overlay'),
-}
+  movieContainer: document.querySelector('.movies'),
+  modal: document.querySelector('.film-info__overlay'),
+};
 
 const options = {
   root: null,
@@ -13,7 +17,6 @@ const options = {
   filmInfo: {},
   img_base_url: 'none',
   poster_size: '',
-  backdrop_sizes: [],
   baseUrl: 'https://api.themoviedb.org/3/movie/',
   filmInfoUrl: '',
   configUrl: 'https://api.themoviedb.org/3/configuration?',
@@ -34,27 +37,20 @@ function onMovieCardClick(e) {
 }
 
 function hasSomeParentTheClass(element, classname) {
-    if (element.classList?.contains(classname)) return element;
-    return element.parentNode && hasSomeParentTheClass(element.parentNode, classname);
+  if (element.classList?.contains(classname)) return element;
+  return element.parentNode && hasSomeParentTheClass(element.parentNode, classname);
 }
 
 async function getFilmInfo() {
   notiflix.onLoadingleAdd();
 
+  options.img_base_url = configuration.base_url;
+
   try {
     const { data } = await getData(options.filmInfoUrl + options.key);
     options.filmInfo = data;
-  } catch (error) {
-    notiflix.onError();
-    console.error('error is: ', error);
-  }
-
-  try {
-    const { data } = await getData(options.configUrl + options.key);
-    options.img_base_url = data.images.secure_base_url;
 
     createModal(options);
-
   } catch (error) {
     notiflix.onError();
     console.error('error is: ', error);
@@ -78,7 +74,7 @@ function onKeyboardCloseModal(e) {
 
 function createModal({ filmInfo, img_base_url }) {
   const genres = filmInfo.genres.map(genre => genre.name).join(', ');
-
+  filmCheckLS(filmInfo);
   const modal = `
     <div class="film-info__container">
         <div class="film-info__poster">
@@ -112,8 +108,8 @@ function createModal({ filmInfo, img_base_url }) {
           <h3 class="film-info__description-title">About</h3>
           <p class="film-info__description">${filmInfo.overview}</p>
           <div class="film-info__buttons">
-            <button class="film-info__button film-info__button--accent">add to watched</button>
-            <button class="film-info__button film-info__button--simple">add to queue</button>
+            <button class="film-info__button film-info__button--watched film-info__button--accent">${textBtnWatched}</button>
+            <button class="film-info__button film-info__button--queue film-info__button--simple">${textBtnQueue}</button>
           </div>
         </div>
         <button type="button" class="film-info__close-button"></button>
@@ -123,9 +119,14 @@ function createModal({ filmInfo, img_base_url }) {
   options.root.innerHTML = modal;
 
   const closeButton = options.root.querySelector('.film-info__close-button');
+  const modalContainer = options.root.querySelector('.film-info__container');
 
   options.root.classList.add('is-open');
   document.body.classList.add('is-open');
   closeButton.addEventListener('click', onCloseButtonClick);
   window.addEventListener('keydown', onKeyboardCloseModal);
+  addToLocalStore(filmInfo);
+  if (options.root.classList.contains('dark-modal')) {
+    modalContainer.classList.add('dark');
+  }
 }

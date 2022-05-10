@@ -40,7 +40,7 @@
 }
 
 .tui-pagination .tui-page-btn:hover {
-    background-color: #f4f4f4;
+    background-color:$secondary-text-color;
 }
 
 .tui-pagination .tui-is-selected,
@@ -56,7 +56,7 @@
 }
 
 .tui-pagination .tui-is-selected:hover {
-    background-color: $footer-text-color;
+    background-color: $secondary-text-color;
 }
 
 .tui-pagination .tui-first-child.tui-is-selected,
@@ -82,7 +82,6 @@
 
 .tui-pagination .tui-prev-is-ellip {
     border: none;
-
     @media screen and (max-width: 768px) {
         display: none;
     }
@@ -90,7 +89,6 @@
 
 .tui-pagination .tui-next-is-ellip {
     border: none;
-
     @media screen and (max-width: 768px) {
         display: none;
     }
@@ -109,7 +107,7 @@
 
     display: inline-block;
     vertical-align: middle;
-    font-size: 0px;
+    font-size: 0;
 }
 
 .tui-pagination .tui-ico-ellip {
@@ -131,7 +129,6 @@
     transform: translateX(56px);
 
     border: none;
-
     @media screen and (max-width: 768px) {
         display: none;
     }
@@ -170,7 +167,7 @@
     height: 40px;
     border: none;
     transform: translateX(-56px);
-
+    
     @media screen and (max-width: 768px) {
         display: none;
     }
@@ -183,10 +180,10 @@
 }
 
 .tui-pagination .tui-ico-first {
-    // font-size: 14px;
-    // font-weight: 500;
-    // padding-top: 10px;
-    display: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding-top: 10px;
+    // display: none;
 
     // width: 11px;
     // height: 10px;
@@ -215,9 +212,10 @@
 }
 
 .tui-pagination .tui-ico-last {
-    width: 16px;
-    height: 16px;
-    background-position: 0px -12px
+    font-size: 14px;
+    font-weight: 500;
+    padding-top: 10px;
+    // background-position: 0px -12px
 }
 
 //  .tui-pagination .tui-ico-ellip {
@@ -233,21 +231,23 @@
     cursor: default
 }
 
-//  .tui-pagination .tui-is-disabled .tui-ico-prev {
-//      background-position: -26px -12px
-//  }
+ .tui-pagination .tui-is-disabled .tui-ico-prev {
+     background-position: -26px -12px
+ }
 
-//  .tui-pagination .tui-is-disabled .tui-ico-first {
-//      background-position: -13px 0px
-//  }
+ .tui-pagination .tui-is-disabled .tui-ico-first {
+     background-position: -13px 0px;
+     display: none;
+ }
 
-//  .tui-pagination .tui-is-disabled .tui-ico-next {
-//      background-position: -21px -24px
-//  }
+ .tui-pagination .tui-is-disabled .tui-ico-next {
+     background-position: -21px -24px
+ }
 
-//  .tui-pagination .tui-is-disabled .tui-ico-last {
-//      background-position: -13px -12px
-//  }
+ .tui-pagination .tui-is-disabled .tui-ico-last {
+     background-position: -13px -12px;
+     display: none;
+ }
 
 .tui-page-inputs {
     display: inline-block;

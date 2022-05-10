@@ -8,6 +8,7 @@ import { textBtnWatched } from './add-to-watched';
 const refs = {
   movieContainer: document.querySelector('.movies'),
   modal: document.querySelector('.film-info__overlay'),
+  slider: document.querySelector('.carouselbox')
 };
 
 const options = {
@@ -23,6 +24,7 @@ const options = {
 };
 
 refs.movieContainer.addEventListener('click', onMovieCardClick);
+refs.slider.addEventListener('click', onSliderImageClick)
 
 function onMovieCardClick(e) {
   const movieCard = hasSomeParentTheClass(e.target, 'movie');
@@ -32,6 +34,17 @@ function onMovieCardClick(e) {
 
   options.root = refs.modal;
   options.filmId = movieCard.dataset.id;
+  options.filmInfoUrl = `${options.baseUrl}${options.filmId}?`;
+  getFilmInfo();
+}
+
+function onSliderImageClick(e) {
+  if (e.target.nodeName !== 'IMG') {
+    return;
+  }
+
+  options.root = refs.modal;
+  options.filmId = e.target.dataset.id;
   options.filmInfoUrl = `${options.baseUrl}${options.filmId}?`;
   getFilmInfo();
 }

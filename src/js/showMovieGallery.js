@@ -3,6 +3,7 @@ import renderPopularFilmCards from './renderPopularFilmCards';
 import getData from './getData';
 import saveConfiguration from './saveConfiguration';
 import configuration from './configuration';
+import { pagination } from './pagination';
 
 const options = {
   root: null,
@@ -43,6 +44,8 @@ export async function renderPopFilms() {
     const { data } = await getData(options.popularFilmsUrl + options.key + '&page=' + options.page);
     console.log(options.page)
     options.searchResults = data;
+    pagination.setTotalItems(options.searchResults.total_pages);
+    localStorage.setItem('total_pages', JSON.stringify(options.searchResults.total_pages));
   } catch (error) {
     console.error('error is: ', error);
   }

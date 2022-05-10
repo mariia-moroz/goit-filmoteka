@@ -19,22 +19,24 @@ const options = {
   movie: '',
 };
 
+document.addEventListener('click', dynamicLibraryMarkup);
+
 export function onWatchedBtnClick() {
-  document.addEventListener('click', dynamicLibraryMarkup);
-
   clearContainer();
-
   watchedBtnToggle();
 
   const watchedFilms = JSON.parse(localStorage.getItem('Watched'));
 
   if (watchedFilms == '') {
-    return notiflix.onNoAddedFilms();
+    notiflix.onNoAddedtoWatched();
+  } else if (watchedFilms !== null) {
+    watchedFilms.forEach(film => {
+      options.genresList = film.genres.map(genre => genre.name);
+      options.movie = film;
+
+      renderFilmCard(options);
+    });
   }
-  watchedFilms.forEach(film => {
-    options.genresList = film.genres.map(genre => genre.name);
-    options.movie = film;
-  });
 }
 
 function onQueueBtnClick() {
@@ -44,14 +46,15 @@ function onQueueBtnClick() {
   const queueFilms = JSON.parse(localStorage.getItem('Queue'));
 
   if (queueFilms == '') {
-    return notiflix.onNoAddedFilms();
-  }
-  queueFilms.forEach(film => {
-    options.genresList = film.genres.map(genre => genre.name);
-    options.movie = film;
+    notiflix.onNoAddedtoQueue();
+  } else {
+    queueFilms.forEach(film => {
+      options.genresList = film.genres.map(genre => genre.name);
+      options.movie = film;
 
-    renderFilmCard(options);
-  });
+      renderFilmCard(options);
+    });
+  }
 }
 
 function dynamicLibraryMarkup(e) {
@@ -94,7 +97,6 @@ export function queueBtnToggleOff() {
 
 export function watchedBtnToggleOff() {
   refs.watchedBtn.classList.remove('active-library-button');
-  console.log(1);
 }
 
 function clearContainer() {

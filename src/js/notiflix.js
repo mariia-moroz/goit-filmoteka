@@ -29,11 +29,17 @@ class Notification {
   onLoadingleAdd() {
     Notiflix.Loading.arrows('Please wait ...', this.options);
   }
+
   onLoadingRemove() {
     Notiflix.Loading.remove();
   }
-  onNoAddedFilms() {
-    Notiflix.Notify.warning('Oops, you did not add anything', this.options);
+
+  onNoAddedtoWatched() {
+    Notiflix.Notify.warning('Oops, you did not add anything to "WATCHED"', this.options);
+  }
+
+  onNoAddedtoQueue() {
+    Notiflix.Notify.warning('Oops, you did not add anything to "QUEUE"', this.options);
   }
 
   onError() {

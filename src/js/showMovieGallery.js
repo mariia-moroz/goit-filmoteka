@@ -43,7 +43,7 @@ export async function renderPopFilms() {
     await saveConfiguration();
     const { data } = await getData(options.popularFilmsUrl + options.key + '&page=' + options.page);
     options.searchResults = data;
-    pagination.setTotalItems(options.searchResults.total_pages);
+    pagination.setTotalItems(options.searchResults.total_results);
     localStorage.setItem('total_pages', JSON.stringify(options.searchResults.total_pages));
   } catch (error) {
     console.error('error is: ', error);

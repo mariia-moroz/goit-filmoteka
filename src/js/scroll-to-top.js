@@ -8,9 +8,11 @@ window.addEventListener('scroll', () => {
   }
 });
 
-scrollTop.addEventListener('click', () => {
+scrollTop.addEventListener('click', scrollToTop);
+
+export function scrollToTop() {
   window.scrollTo({
     top: 0,
     behavior: 'smooth',
   });
-});
+}

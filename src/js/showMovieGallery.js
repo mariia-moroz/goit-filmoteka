@@ -42,7 +42,6 @@ export async function renderPopFilms() {
   try {
     await saveConfiguration();
     const { data } = await getData(options.popularFilmsUrl + options.key + '&page=' + options.page);
-    console.log(options.page)
     options.searchResults = data;
     pagination.setTotalItems(options.searchResults.total_pages);
     localStorage.setItem('total_pages', JSON.stringify(options.searchResults.total_pages));

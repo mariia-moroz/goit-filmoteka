@@ -1,6 +1,6 @@
 import { changeToHomeHeaderMarkup } from './headerMarkup';
 import { changeToLibraryHeaderMarkup } from './headerMarkup';
-import onWatchedBtnClick from './onWatchedBtnClick';
+import { onWatchedBtnClick } from './libraryButtons';
 import renderPopFilms from './showMovieGallery';
 
 const refs = {
@@ -28,7 +28,6 @@ function onNavItemClick(e) {
 }
 
 function onLogoClick(e) {
-  console.log(e.currentTarget.classList.contains('logo'));
   if (e.currentTarget.className !== undefined && e.currentTarget.className === 'logo') {
     renderPopFilms();
     clearContainer();

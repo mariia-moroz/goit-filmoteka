@@ -1,9 +1,9 @@
 // import './sass/main.scss';
 import renderPopularFilmCards from './renderPopularFilmCards';
 import getData from './getData';
-import { Pagination } from 'tui-pagination';
 import saveConfiguration from './saveConfiguration';
 import configuration from './configuration';
+import { pagination } from './pagination';
 
 const options = {
   root: null,
@@ -20,20 +20,31 @@ const options = {
 };
 
 options.root = document.querySelector('.movies');
+renderPopFilms();
 
-export default function showMovieGallery() { Pagination
+
+
+export default function showMovieGallery() { 
   renderPopFilms();
 }
 
-export async function renderPopFilms(newPage = 1) {
+export async function renderPopFilms() {
+  const paginationData = localStorage.getItem('pagination-page');
+  const pageFromLS = JSON.parse(paginationData);
+
+  if (pageFromLS) {
+    options.page = pageFromLS;
+  } 
+  
   //---clear root from a previous rendering
   options.root.innerHTML = '';
   //---getting array of films
-  options.page = newPage;
   try {
     await saveConfiguration();
     const { data } = await getData(options.popularFilmsUrl + options.key + '&page=' + options.page);
     options.searchResults = data;
+    pagination.setTotalItems(options.searchResults.total_results);
+    localStorage.setItem('total_pages', JSON.stringify(options.searchResults.total_pages));
   } catch (error) {
     console.error('error is: ', error);
   }
@@ -53,3 +64,4 @@ export async function renderPopFilms(newPage = 1) {
   //---rendering every card
   renderPopularFilmCards(options);
 }
+

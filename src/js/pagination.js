@@ -31,16 +31,24 @@ const options = {
 
 const pagination = new Pagination('pagination', options);
 
+export { pagination }
+
+document.querySelector('.tui-ico-first').textContent = '1';
+document.querySelector('.tui-ico-last').textContent = '1000';
+
 // внесення номеру сторінки в local Storage
 
-pagination.on('afterMove', event => {
+pagination.on('afterMove', onPaginationClick);
+
+function onPaginationClick(event) {
+  document.querySelector('.tui-ico-first').textContent = '1';
   const currentPage = event.page;
   localStorage.setItem('pagination-page', JSON.stringify(currentPage));
-  const paginationData = localStorage.getItem('pagination-page');
-  if (paginationData) {
-    const pageFromLS = JSON.parse(paginationData);
-  renderPopFilms(pageFromLS);
-}});
+  
+  console.log(currentPage)
+  renderPopFilms();
+  document.querySelector('.tui-ico-last').textContent = localStorage.getItem('total_pages');
+}
 
 // забираємо з local Storage номер сторінки
 function getPage() {
@@ -52,3 +60,4 @@ function getPage() {
     return 1;
   }
 }
+

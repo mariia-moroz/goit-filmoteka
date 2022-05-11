@@ -22,6 +22,7 @@ const homeMarkup = () => {
   renderPopFilms();
   queueBtnToggleOff();
   watchedBtnToggleOff();
+  showPagination();
   refs.slider.classList.remove('visually-hidden');
 };
 
@@ -29,17 +30,16 @@ const libraryMarkup = () => {
   clearContainer();
   changeToLibraryHeaderMarkup();
   onWatchedBtnClick();
+  hidePagination();
 };
 
 function onNavItemClick(e) {
   if (e.target.innerText !== undefined && e.target.innerText.toLowerCase() === 'home') {
-    showPagination();
     homeMarkup();
   } else if (
     e.target.innerText !== undefined &&
     e.target.innerText.toLowerCase() === 'my library'
   ) {
-    hidePagination()
     libraryMarkup();
   }
 }

@@ -37,6 +37,7 @@ function closeModal() {
   document.removeEventListener('keydown', eventKeydown);
   array.map(item => {
     item.classList.add('big');
+
     item.style.opacity = '0';
   });
 }

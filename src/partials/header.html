@@ -9,22 +9,15 @@
           <p class="logo__text">Filmoteka</p>
         </div>
         <ul class="nav__list list">
-          <li class="nav__item nav__item--current">Home</li>
-          <li class="nav__item">My library</li>
+          <li class="nav__item nav__item--current" id="home">Home</li>
+          <li class="nav__item" id="library">My library</li>
         </ul>
       </div>
     </nav>
     <div class="search-field" data-action="search-field">
       <form class="search-field__form">
-        <input
-          class="search-field__input"
-          placeholder="Поиск фильмов"
-          type="text"
-          name="search"
-          id="search"
-          autocomplete="off"
-          data-action="search-input"
-        />
+        <input class="search-field__input" placeholder="Поиск фильмов" type="text" name="search" id="search"
+          autocomplete="off" data-action="search-input" />
         <button class="search-field__btn" data-action="search-btn" type="submit">
           <svg width="12px" height="12px" class="search-field__icon">
             <use href="/images/sprite.svg#search"></use>

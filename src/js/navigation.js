@@ -1,8 +1,5 @@
-import { changeToHomeHeaderMarkup } from './dynamicHeaderMarkup';
-import { changeToLibraryHeaderMarkup } from './dynamicHeaderMarkup';
-import { onWatchedBtnClick } from './libraryButtons';
-import { queueBtnToggleOff } from './libraryButtons';
-import { watchedBtnToggleOff } from './libraryButtons';
+import { changeToHomeHeaderMarkup, changeToLibraryHeaderMarkup } from './dynamicHeaderMarkup';
+import { onWatchedBtnClick, queueBtnToggleOff, watchedBtnToggleOff } from './libraryButtons';
 import { hidePagination, showPagination } from './pagination';
 import renderPopFilms from './showMovieGallery';
 
@@ -22,6 +19,7 @@ const homeMarkup = () => {
   renderPopFilms();
   queueBtnToggleOff();
   watchedBtnToggleOff();
+  showPagination();
   refs.slider.classList.remove('visually-hidden');
 };
 
@@ -29,17 +27,16 @@ const libraryMarkup = () => {
   clearContainer();
   changeToLibraryHeaderMarkup();
   onWatchedBtnClick();
+  hidePagination();
 };
 
 function onNavItemClick(e) {
   if (e.target.innerText !== undefined && e.target.innerText.toLowerCase() === 'home') {
-    showPagination();
     homeMarkup();
   } else if (
     e.target.innerText !== undefined &&
     e.target.innerText.toLowerCase() === 'my library'
   ) {
-    hidePagination()
     libraryMarkup();
   }
 }

@@ -88,18 +88,26 @@ function onKeyboardCloseModal(e) {
 function createModal({ filmInfo, img_base_url }) {
   const genres = filmInfo.genres.map(genre => genre.name).join(', ');
   filmCheckLS(filmInfo);
-  const modal = `
-    <div class="film-info__container">
-        <div class="film-info__poster">
-          <img
-            loading="lazy"
-            src="${img_base_url}w500${filmInfo.poster_path}"
+
+  let src = '';
+  if (filmInfo.poster_path) {
+    src = `src="${img_base_url}w500${filmInfo.poster_path}"
             srcset="
               ${img_base_url}w500${filmInfo.poster_path}           1x,
               ${img_base_url}w780${filmInfo.poster_path}           2x
             "
             class="film-info__image img"
-            alt="${filmInfo.original_title}"
+            alt="${filmInfo.original_title}"`
+  } else {
+    src = '';
+  }
+
+  const modal = `
+    <div class="film-info__container">
+        <div class="film-info__poster">
+          <img
+            loading="lazy"
+            ${src}
           />
         </div>
         <div class="film-info__text">

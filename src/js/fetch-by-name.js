@@ -3,7 +3,8 @@ import renderPopularFilmCards from './renderPopularFilmCards';
 import getData from './getData';
 import saveConfiguration from './saveConfiguration';
 import configuration from './configuration';
-import { pagination, paginationOptions} from './pagination';
+import { pagination, paginationOptions } from './pagination';
+import { hideSlider } from './slider';
 
 
 let filmToFind;
@@ -24,6 +25,7 @@ function onInput() {
 async function onBtn(event) {
   event.preventDefault();
   notiflix.onLoadingleAdd();
+  hideSlider();
   showGallery();
   notiflix.onLoadingRemove();
 }

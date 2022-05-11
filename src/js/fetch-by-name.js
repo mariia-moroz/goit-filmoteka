@@ -37,7 +37,7 @@ function MovieClear() {
 function showGallery() {
   paginationOptions.key = 'search';
   pagination.movePageTo(1);
-  localStorage.setItem('pagination-page', JSON.stringify(1));
+  localStorage.setItem('pagination-page-search', JSON.stringify(1));
   renderNameFilms();
 }
 
@@ -60,7 +60,7 @@ options.root = document.querySelector('.movies');
 
 
 export async function renderNameFilms() {
-  const paginationData = localStorage.getItem('pagination-page');
+  const paginationData = localStorage.getItem('pagination-page-search');
   const pageFromLS = JSON.parse(paginationData);
 
   if (pageFromLS) {

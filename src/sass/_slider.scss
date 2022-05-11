@@ -1,10 +1,21 @@
-.slider{
-    padding-top: 20px;
+.slider {
+    padding-top: 60px;
+    padding-bottom: 20px;
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
 }
-.slider__title{
+
+.slider__title {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
+    font-weight: 500;
+
+    body.dark & {
+        color: $primary-white-color;
+    }
 }
 
 .carouselbox{
@@ -34,29 +45,30 @@
         transform: scale(1.1);
         z-index: 5;
     }
+
+    &:first-child() {
+        margin-left: 0;
+    }
 }
 
-.carousel{
-    
+.carousel {
     margin: auto;
-  
-    width: 80%;
+    width: 100%;
     position: relative;
 }
 
 .carousel .switchleft,
 .carousel .switchright{
-
-    color: black;
-    font-weight: bold;
+    font-weight: 500;
     height: 100%;
     width: 45px;
-    line-height: 250px;
+    line-height: 0;
     font-size: 25px;
     text-align: center;
-    background-color: $footer-text-color;
     top: 0;
     z-index: 3;
+    background-color: $accent-color;
+    color: $primary-white-color;
 }
 
 .carousel .switchleft{
@@ -66,18 +78,19 @@
 }
 
 .carousel .switchright{
-        position: absolute;
-            right: -50px;
+    position: absolute;
+    right: -50px;
              
 }
 
 .sliderButton {
     border-radius: 5px;
-border: none;
-transition: 0.2s linear;
+    border: none;
+    transition: 0.2s linear;
+    background-color: $accent-color;
+
     &:hover {
-            transform: scale(1.1);
+        transform: scale(1.1);
         transition: 0.2s linear;
-        }
+    }
 }
- 

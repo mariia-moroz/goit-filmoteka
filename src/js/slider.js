@@ -49,3 +49,11 @@ async function showMovieData() {
 
   scrollPerClick = 400;
 }
+
+export function showSlider() {
+  document.querySelector('.slider').classList.remove('visually-hidden');
+}
+
+export function hideSlider() {
+  document.querySelector('.slider').classList.add('visually-hidden');
+}

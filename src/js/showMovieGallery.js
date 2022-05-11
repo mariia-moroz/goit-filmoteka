@@ -3,7 +3,8 @@ import renderPopularFilmCards from './renderPopularFilmCards';
 import getData from './getData';
 import saveConfiguration from './saveConfiguration';
 import configuration from './configuration';
-import { pagination, paginationOptions} from './pagination';
+import { pagination, paginationOptions } from './pagination';
+import { showSlider } from './slider'
 
 const options = {
   root: null,
@@ -19,8 +20,11 @@ const options = {
   genresUrl: 'https://api.themoviedb.org/3/genre/movie/list?',
 };
 
+showSlider();
+
 options.root = document.querySelector('.movies');
 showMovieGallery();
+
 const paginationData = localStorage.getItem('pagination-page');
 const pageFromLS = JSON.parse(paginationData);
 pagination.setTotalItems(20000);

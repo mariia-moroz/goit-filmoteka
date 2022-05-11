@@ -1,13 +1,19 @@
 export default function renderFilmCard({ root, base_url, poster_size, movie, genresList, page }) {
   const { id, title, poster_path, vote_average, release_date } = movie;
+  let src = '';
+  if (poster_path) {
+    src = `src="${base_url}${poster_size}${poster_path}" alt="${title}"`
+  } else {
+    src = '';
+  }
+
   root.insertAdjacentHTML(
     'beforeend',
     `
     <div class="movie" data-id="${id}">
       <img
         class="movie__cover"
-        src="${base_url}${poster_size}${poster_path}"
-        alt="${title}"
+        ${src}
       />
       <h2 class="card-preview-info__name">${title}</h2>
       <div class="card-preview-info">

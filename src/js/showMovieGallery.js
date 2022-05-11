@@ -45,13 +45,13 @@ export async function renderPopFilms() {
   
   //---clear root from a previous rendering
   options.root.innerHTML = '';
+
   //---getting array of films
   try {
     await saveConfiguration();
     const { data } = await getData(options.popularFilmsUrl + options.key + '&page=' + options.page);
     options.searchResults = data;
     pagination.setTotalItems(options.searchResults.total_results);
-    // localStorage.setItem('total_pages', JSON.stringify(options.searchResults.total_pages));
   } catch (error) {
     console.error('error is: ', error);
   }
@@ -63,7 +63,6 @@ export async function renderPopFilms() {
   try {
     const { data } = await getData(options.genresUrl + options.key);
     options.genres = data.genres;
-    console.log(options.genres);
   } catch (error) {
     console.error('error is: ', error);
   }

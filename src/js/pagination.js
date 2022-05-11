@@ -28,14 +28,15 @@ pagination.on('afterMove', onPaginationClick);
 
 export function onPaginationClick(event) {
   const currentPage = event.page;
-  localStorage.setItem('pagination-page', JSON.stringify(currentPage));
   const value = paginationOptions.key;
   console.log(value);
   switch (value) {
     case "popular":
+      localStorage.setItem('pagination-page', JSON.stringify(currentPage));
       renderPopFilms();
       break;
     case "search":
+      localStorage.setItem('pagination-page-search', JSON.stringify(currentPage));
       renderNameFilms();
       break;
   }

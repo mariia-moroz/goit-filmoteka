@@ -43,11 +43,11 @@ export function onPaginationClick(event) {
 }
 
 export function showPagination() {
-  document.querySelector('.pagination_container').classList.remove('visually-hidden');
+  document.querySelector('[id="pagination"]').classList.remove('visually-hidden');
 }
 
 export function hidePagination() {
-  document.querySelector('.pagination_container').classList.add('visually-hidden');
+  document.querySelector('[id="pagination"]').classList.add('visually-hidden');
 }
 
 // забираємо з local Storage номер сторінки

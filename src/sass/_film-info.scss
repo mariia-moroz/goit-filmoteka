@@ -93,6 +93,10 @@ body.is-open {
     height: 100%;
     border-radius: 5px;
     overflow: hidden;
+    background-image: url('../images/no-image.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     @media screen and (max-width: 767px) {
         margin-bottom: 30px;

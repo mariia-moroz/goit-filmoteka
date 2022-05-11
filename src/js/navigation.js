@@ -3,6 +3,7 @@ import { changeToLibraryHeaderMarkup } from './dynamicHeaderMarkup';
 import { onWatchedBtnClick } from './libraryButtons';
 import { queueBtnToggleOff } from './libraryButtons';
 import { watchedBtnToggleOff } from './libraryButtons';
+import { hidePagination, showPagination } from './pagination';
 import renderPopFilms from './showMovieGallery';
 
 const refs = {
@@ -32,11 +33,13 @@ const libraryMarkup = () => {
 
 function onNavItemClick(e) {
   if (e.target.innerText !== undefined && e.target.innerText.toLowerCase() === 'home') {
+    showPagination();
     homeMarkup();
   } else if (
     e.target.innerText !== undefined &&
     e.target.innerText.toLowerCase() === 'my library'
   ) {
+    hidePagination()
     libraryMarkup();
   }
 }

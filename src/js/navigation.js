@@ -1,8 +1,5 @@
-import { changeToHomeHeaderMarkup } from './dynamicHeaderMarkup';
-import { changeToLibraryHeaderMarkup } from './dynamicHeaderMarkup';
-import { onWatchedBtnClick } from './libraryButtons';
-import { queueBtnToggleOff } from './libraryButtons';
-import { watchedBtnToggleOff } from './libraryButtons';
+import { changeToHomeHeaderMarkup, changeToLibraryHeaderMarkup } from './dynamicHeaderMarkup';
+import { onWatchedBtnClick, queueBtnToggleOff, watchedBtnToggleOff } from './libraryButtons';
 import { hidePagination, showPagination } from './pagination';
 import renderPopFilms from './showMovieGallery';
 

@@ -3,7 +3,8 @@ import renderPopularFilmCards from './renderPopularFilmCards';
 import getData from './getData';
 import saveConfiguration from './saveConfiguration';
 import configuration from './configuration';
-import { pagination } from './pagination';
+import { pagination, paginationOptions } from './pagination';
+import { showSlider } from './slider'
 
 const options = {
   root: null,
@@ -19,12 +20,18 @@ const options = {
   genresUrl: 'https://api.themoviedb.org/3/genre/movie/list?',
 };
 
+showSlider();
+
 options.root = document.querySelector('.movies');
-renderPopFilms();
+showMovieGallery();
 
-
+const paginationData = localStorage.getItem('pagination-page');
+const pageFromLS = JSON.parse(paginationData);
+pagination.setTotalItems(20000);
+pagination.movePageTo(pageFromLS);
 
 export default function showMovieGallery() { 
+  paginationOptions.key = 'popular';
   renderPopFilms();
 }
 
@@ -44,7 +51,7 @@ export async function renderPopFilms() {
     const { data } = await getData(options.popularFilmsUrl + options.key + '&page=' + options.page);
     options.searchResults = data;
     pagination.setTotalItems(options.searchResults.total_results);
-    localStorage.setItem('total_pages', JSON.stringify(options.searchResults.total_pages));
+    // localStorage.setItem('total_pages', JSON.stringify(options.searchResults.total_pages));
   } catch (error) {
     console.error('error is: ', error);
   }

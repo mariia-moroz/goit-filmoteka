@@ -1,7 +1,7 @@
 import './sass/main.scss';
 import './js/configuration';
 import './js/saveConfiguration';
-import './js/showMovieGallery';
+import showMovieGallery from './js/showMovieGallery';
 import './js/dynamicHeaderMarkup';
 import './js/fetch-by-name';
 import './js/filmInfoModalCreate';
@@ -14,3 +14,5 @@ import './js/slider';
 import './js/libraryButtons';
 import './js/navigation';
 import './js/scroll-to-top';
+
+showMovieGallery();

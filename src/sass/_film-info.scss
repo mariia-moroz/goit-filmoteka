@@ -44,7 +44,7 @@ body.is-open {
 
     transition: opacity $transition-duration $transition-timing-function;
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         padding: 20px;
     }
 
@@ -100,7 +100,7 @@ body.is-open {
     background-repeat: no-repeat;
     background-size: cover;
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         margin-bottom: 30px;
         min-height: 356px;
     }
@@ -235,13 +235,13 @@ body.is-open {
     flex-wrap: wrap;
     gap: 15px;
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         max-width: 240px;
         margin-left: auto;
         margin-right: auto;
     }
 
-    @media screen and (min-width: 767px) {
+    @media screen and (min-width: 768px) {
         max-width: 287px;
     }
 }
@@ -255,7 +255,18 @@ body.is-open {
     height: 44px;
     padding-left: 8px;
     padding-right: 8px;
-    flex-grow: 1;
+
+    @media screen and (max-width: 768px) {
+        width: 112px;
+    }
+    
+    @media screen and (min-width: 768px) {
+        width: 125px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        width: 136px;
+    }
 }
 
 .film-info__button--accent {
@@ -305,7 +316,7 @@ body.is-open {
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 100%;
-    @media screen and (min-width: 767px) {
+    @media screen and (min-width: 768px) {
         margin-bottom: 40px;
     }
 }

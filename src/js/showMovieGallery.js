@@ -23,7 +23,6 @@ const options = {
 showSlider();
 
 options.root = document.querySelector('.movies');
-showMovieGallery();
 
 const paginationData = localStorage.getItem('pagination-page');
 const pageFromLS = JSON.parse(paginationData);

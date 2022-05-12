@@ -4,6 +4,7 @@ export default function renderFilmCard({ root, base_url, poster_size, movie, gen
   let date = '';
   if (poster_path) {
     src = `
+    src=""
     data-src="${base_url}${poster_size}${poster_path}" 
     alt="${title}"
     `

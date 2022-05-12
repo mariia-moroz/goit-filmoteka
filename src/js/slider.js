@@ -42,7 +42,10 @@ async function showMovieData() {
   result.map(function (cur, index) {
     sliders.insertAdjacentHTML(
       'beforeend',
-      `<img class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w185/${cur.poster_path}" data-id="${cur.id}" />`,
+      `<img class="img-${index} slider-img" 
+      src="https://image.tmdb.org/t/p/w185/${cur.poster_path}"
+      alt="${cur.title}" 
+      data-id="${cur.id}" />`,
     );
   });
 

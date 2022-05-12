@@ -6,7 +6,11 @@ const right = document.querySelector('.switchright');
 let scrollPerClick;
 let imagePadding = 20;
 
-showMovieData();
+let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+
+if (width > 768) {
+  showMovieData();
+}
 
 let scrollAmount = 0;
 
@@ -42,8 +46,8 @@ async function showMovieData() {
   result.map(function (cur, index) {
     sliders.insertAdjacentHTML(
       'beforeend',
-      `<img class="img-${index} slider-img" 
-      src="https://image.tmdb.org/t/p/w185/${cur.poster_path}"
+      `<img class="img-${index} slider-img lazyload" 
+      data-src="https://image.tmdb.org/t/p/w185/${cur.poster_path}"
       alt="${cur.title}" 
       data-id="${cur.id}" />`,
     );

@@ -129,9 +129,9 @@ function createModal({ filmInfo, img_base_url }) {
           <h3 class="film-info__description-title">About</h3>
           <p class="film-info__description">${filmInfo.overview}</p>
           <div class="film-info__buttons">
-            <button class="film-info__button film-info__button--watched film-info__button--accent">${textBtnWatched}</button>
-            <button class="film-info__button film-info__button--queue film-info__button--simple">${textBtnQueue}</button>
-            <button class="film-info__button film-info__button--simple film-info__button--trailer">watch the trailer</button>
+            <button class="film-info__button film-info__button--watched film-info__button--accent" aria-label="add to watched">${textBtnWatched}</button>
+            <button class="film-info__button film-info__button--queue film-info__button--simple" aria-label="add to queue">${textBtnQueue}</button>
+            <button class="film-info__button film-info__button--simple film-info__button--trailer" aria-label="watch trailer">watch the trailer</button>
           </div>
         </div>
         <button type="button" class="modal__close-button"></button>

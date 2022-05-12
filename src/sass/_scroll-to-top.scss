@@ -1,7 +1,7 @@
 .scroll-to-top {
   position: fixed;
   right: 30px;
-  bottom: 50px;
+  bottom: 90px;
   z-index: 500;
   width: 40px;
   height: 40px;
@@ -33,9 +33,14 @@
     color: $accent-color;
     background-color: rgba(255, 107, 1, 0.1);
   }
+
+    @media screen and (max-width: 480px) {
+      display: none;
+    }
 }
 
 .scroll-to-top--active {
   visibility: visible;
   opacity: 1;
+  background-color: $accent-color;
 }

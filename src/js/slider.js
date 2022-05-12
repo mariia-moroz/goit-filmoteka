@@ -7,7 +7,7 @@ const right = document.querySelector('.switchright');
 let scrollPerClick;
 let imagePadding = 20;
 
-if (window.innerWidth > 768) {
+if (window.innerWidth >= 768) {
   loadSlider();
 }
 

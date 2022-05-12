@@ -1,12 +1,14 @@
+import { throttle } from "throttle-debounce";
 const scrollTop = document.querySelector('.scroll-to-top');
 
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', throttle(500, () => {
   if (window.scrollY > 700) {
     scrollTop.classList.add('scroll-to-top--active');
   } else {
     scrollTop.classList.remove('scroll-to-top--active');
   }
-});
+
+}));
 
 scrollTop.addEventListener('click', scrollToTop);
 

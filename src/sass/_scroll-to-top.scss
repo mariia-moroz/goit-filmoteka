@@ -6,13 +6,13 @@
   width: 40px;
   height: 40px;
   color: #ffffff;
-  background-color: #ff6b01;
+  background-color: $accent-color;
   cursor: pointer;
   visibility: hidden;
   border-radius: 50px;
-  box-shadow: inset 0 0 0 2px #ff6b01;
+  box-shadow: inset 0 0 0 2px $accent-color;
   opacity: 0;
-  transition: 2000ms;
+  transition: $transition-duration $transition-timing-function;
 
   &::before {
     position: absolute;
@@ -29,8 +29,8 @@
   }
 
   &:hover {
-    color: #ff6b01;
-    background-color: #ffffff;
+    color: $accent-color;
+    background-color: rgba(255, 107, 1, 0.1);
   }
 }
 

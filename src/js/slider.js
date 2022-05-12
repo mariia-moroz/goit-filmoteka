@@ -6,9 +6,7 @@ const right = document.querySelector('.switchright');
 let scrollPerClick;
 let imagePadding = 20;
 
-let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-
-if (width > 768) {
+if (window.matchMedia('(min-device-width: 768px)').matches) {
   showMovieData();
 }
 
@@ -35,6 +33,7 @@ left.addEventListener('click', function sliderScrollLeft() {
 });
 
 async function showMovieData() {
+  console.log('show');
   const api_key = '306e564986f0782b8ec4bf227b0f3c28';
 
   let result = await axios.get(

@@ -20,6 +20,7 @@ body.is-open {
   overflow: hidden;
 }
 
+.video-modal__overlay,
 .film-info__overlay {
     opacity: 0;
     pointer-events: none;
@@ -53,6 +54,7 @@ body.is-open {
     }
 }
 
+.video-modal__container,
 .film-info__container {
     width: 100%;
     background-color: $primary-white-color;
@@ -230,9 +232,17 @@ body.is-open {
 
 .film-info__buttons {
     display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 
     @media screen and (max-width: 767px) {
-        justify-content: center;
+        max-width: 240px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @media screen and (min-width: 767px) {
+        max-width: 287px;
     }
 }
 
@@ -245,26 +255,13 @@ body.is-open {
     height: 44px;
     padding-left: 8px;
     padding-right: 8px;
-
-    @media screen and (max-width: 767px) {
-        width: 112px;
-    }
-
-    @media screen and (min-width: 768px) {
-        width: 125px;
-        margin-bottom: 40px;
-    }
-    
-    @media screen and (min-width: 1024px) {
-        width: 136px;
-    }
+    flex-grow: 1;
 }
 
 .film-info__button--accent {
     border: 1px solid $accent-color;
     background-color: $accent-color;
     color: $primary-white-color;
-    margin-right: 15px;
 
     transition: border-color $transition-duration $transition-timing-function,
     background-color $transition-duration $transition-timing-function;
@@ -304,7 +301,16 @@ body.is-open {
     }
 }
 
-.film-info__close-button {
+.film-info__button--trailer {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 100%;
+    @media screen and (min-width: 767px) {
+        margin-bottom: 40px;
+    }
+}
+
+.modal__close-button {
     padding: 0;
     position: absolute;
     top: 10px;

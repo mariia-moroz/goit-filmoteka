@@ -20,11 +20,12 @@
 }
 
 .switcher {
-  @media screen and (max-width: 420px) {
-    display: none;
-  }
   display: flex;
   flex-direction: row-reverse;
+
+  @media screen and (max-width: 480px) {
+    margin-top: 40px;
+  }
 }
 
 .checkbox {

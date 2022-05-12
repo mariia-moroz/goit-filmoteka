@@ -1,8 +1,13 @@
 .slider {
+    display: block;
     padding-top: 60px;
     padding-bottom: 20px;
 
     @media screen and (max-width: 767px) {
+        display: none;
+    }
+
+    &.hidden {
         display: none;
     }
 }

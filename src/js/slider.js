@@ -50,7 +50,8 @@ async function showMovieData() {
   result.map(function (cur, index) {
     sliders.insertAdjacentHTML(
       'beforeend',
-      `<img class="img-${index} slider-img lazyload" 
+      `<img class="img-${index} slider-img lazyload"
+      src= ""
       data-src="https://image.tmdb.org/t/p/w185/${cur.poster_path}"
       alt="${cur.title}" 
       data-id="${cur.id}" />`,

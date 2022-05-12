@@ -1,18 +1,22 @@
 import axios from 'axios';
 
+const slider = document.querySelector('.slider');
 const sliders = document.querySelector('.carouselbox');
 const left = document.querySelector('.switchleft');
 const right = document.querySelector('.switchright');
 let scrollPerClick;
 let imagePadding = 20;
 
-if (window.matchMedia('(min-device-width: 768px)').matches) {
-  showMovieData();
+if (window.innerWidth > 768) {
+  loadSlider();
 }
 
 let scrollAmount = 0;
 
-right.addEventListener('click', function sliderScrollRight() {
+function loadSlider() {
+  showMovieData()
+
+  right.addEventListener('click', function sliderScrollRight() {
   sliders.scrollTo({
     top: 0,
     left: (scrollAmount += scrollPerClick),
@@ -31,13 +35,14 @@ left.addEventListener('click', function sliderScrollLeft() {
     scrollAmount = 0;
   }
 });
+  
+}
 
 async function showMovieData() {
-  console.log('show');
   const api_key = '306e564986f0782b8ec4bf227b0f3c28';
 
   let result = await axios.get(
-    'https://api.themoviedb.org/3/discover/movie?api_key=' + api_key + '&sort_by=popularity.desc',
+    'https://api.themoviedb.org/3/movie/upcoming?api_key=' + api_key
   );
 
   result = result.data.results;
@@ -56,9 +61,9 @@ async function showMovieData() {
 }
 
 export function showSlider() {
-  document.querySelector('.slider').classList.remove('visually-hidden');
+  slider.classList.remove('hidden');
 }
 
 export function hideSlider() {
-  document.querySelector('.slider').classList.add('visually-hidden');
+  slider.classList.add('hidden');
 }

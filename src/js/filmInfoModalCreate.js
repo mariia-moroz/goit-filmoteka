@@ -8,7 +8,7 @@ import { textBtnWatched } from './add-to-watched';
 const refs = {
   movieContainer: document.querySelector('.movies'),
   modal: document.querySelector('.film-info__overlay'),
-  slider: document.querySelector('.carouselbox')
+  slider: document.querySelector('.carouselbox'),
 };
 
 const options = {
@@ -131,23 +131,50 @@ function createModal({ filmInfo, img_base_url }) {
           <div class="film-info__buttons">
             <button class="film-info__button film-info__button--watched film-info__button--accent">${textBtnWatched}</button>
             <button class="film-info__button film-info__button--queue film-info__button--simple">${textBtnQueue}</button>
+            <button class="film-info__button film-info__button--simple film-info__button--trailer">watch the trailer</button>
           </div>
         </div>
-        <button type="button" class="film-info__close-button"></button>
+        <button type="button" class="modal__close-button"></button>
     </div>
     `;
 
   options.root.innerHTML = modal;
 
-  const closeButton = options.root.querySelector('.film-info__close-button');
-  const modalContainer = options.root.querySelector('.film-info__container');
+  onModalCreated();
+  addToLocalStore(filmInfo);
+
+  const videoModalOpenBtn = options.root.querySelector('.film-info__button--trailer');
+  videoModalOpenBtn.addEventListener('click', onWatchTrailerClick);
+}
+
+function onModalCreated() {
+  const closeButton = options.root.querySelector('.modal__close-button');
+  const modalContainer = options.root.firstChild;
 
   options.root.classList.add('is-open');
   document.body.classList.add('is-open');
   closeButton.addEventListener('click', onCloseButtonClick);
   window.addEventListener('keydown', onKeyboardCloseModal);
-  addToLocalStore(filmInfo);
+
   if (options.root.classList.contains('dark-modal')) {
     modalContainer.classList.add('dark');
   }
+}
+
+function onWatchTrailerClick() {
+  onCloseButtonClick();
+  createVideoModal();
+}
+
+function createVideoModal() {
+  const modal = `
+    <div class="video-modal__container">
+        
+        <button type="button" class="modal__close-button"></button>
+    </div>
+    `;
+  
+  options.root.innerHTML = modal;
+  
+  onModalCreated();
 }

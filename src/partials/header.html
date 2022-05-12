@@ -16,9 +16,22 @@
     </nav>
     <div class="search-field" data-action="search-field">
       <form class="search-field__form">
-        <input class="search-field__input" placeholder="Поиск фильмов" type="text" name="search" id="search"
-          autocomplete="off" data-action="search-input" />
-        <button class="search-field__btn" data-action="search-btn" type="submit">
+        <input
+          class="search-field__input"
+          placeholder="Поиск фильмов"
+          type="text"
+          name="search"
+          id="search"
+          autocomplete="off"
+          data-action="search-input"
+          aria-label="search film"
+        />
+        <button
+          class="search-field__btn"
+          data-action="search-btn"
+          aria-label="search"
+          type="submit"
+        >
           <svg width="12px" height="12px" class="search-field__icon">
             <use href="/images/sprite.svg#search"></use>
           </svg>
@@ -27,10 +40,18 @@
     </div>
     <ul class="library-button__list list visually-hidden" data-action="library-buttons">
       <li class="library-button__item">
-        <button type="button" class="library-button library-button--watched">Watched</button>
+        <button
+          type="button"
+          class="library-button library-button--watched"
+          aria-label="open watched"
+        >
+          Watched
+        </button>
       </li>
       <li class="library-button__item">
-        <button type="button" class="library-button library-button--queue">Queue</button>
+        <button type="button" class="library-button library-button--queue" aria-label="open queue">
+          Queue
+        </button>
       </li>
     </ul>
     <!-- Theme Switcher  -->

@@ -3,7 +3,10 @@ export default function renderFilmCard({ root, base_url, poster_size, movie, gen
   let src = '';
   let date = '';
   if (poster_path) {
-    src = `src="${base_url}${poster_size}${poster_path}" alt="${title}"`
+    src = `
+    data-src="${base_url}${poster_size}${poster_path}" 
+    alt="${title}"
+    `
   } else {
     src = '';
   }
@@ -13,12 +16,13 @@ export default function renderFilmCard({ root, base_url, poster_size, movie, gen
   } else {
     date = '';
   }
+
   root.insertAdjacentHTML(
     'beforeend',
     `
     <div class="movie" data-id="${id}">
       <img
-        class="movie__cover"
+        class="movie__cover lazyload"
         ${src}
       />
       <h2 class="card-preview-info__name">${title}</h2>

@@ -3,7 +3,6 @@ import axios from 'axios';
 const sliders = document.querySelector('.carouselbox');
 const left = document.querySelector('.switchleft');
 const right = document.querySelector('.switchright');
-console.log(right);
 let scrollPerClick;
 let imagePadding = 20;
 

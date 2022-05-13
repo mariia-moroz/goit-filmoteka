@@ -85,7 +85,6 @@
 
 .nothing-added {
   align-items: center;
-
   text-align: center;
   margin: auto;
   @media screen and (min-width: 768px) {
@@ -111,7 +110,12 @@
 
 .nothing-added__img {
   width: 180px;
+  height: 180px;
   display: inline-block;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('../images/no-film.png');
 
   @media screen and (min-width: 768px) {
     width: 185px;

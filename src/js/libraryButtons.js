@@ -1,5 +1,6 @@
 import renderFilmCard from './renderFilmCard';
 import notiflix from './notiflix';
+import nothingAddedmarkup from './nothing-addedMarkup';
 
 const refs = {
   watchedBtn: document.querySelector('.library-button--watched'),
@@ -28,7 +29,7 @@ export function onWatchedBtnClick() {
   const watchedFilms = JSON.parse(localStorage.getItem('Watched'));
 
   if (watchedFilms == '') {
-    notiflix.onNoAddedtoWatched();
+    appendNothingAddedmarkup();
   } else if (watchedFilms !== null) {
     watchedFilms.forEach(film => {
       options.genresList = film.genres.map(genre => genre.name);
@@ -46,7 +47,7 @@ function onQueueBtnClick() {
   const queueFilms = JSON.parse(localStorage.getItem('Queue'));
 
   if (queueFilms == '') {
-    notiflix.onNoAddedtoQueue();
+    appendNothingAddedmarkup();
   } else {
     queueFilms.forEach(film => {
       options.genresList = film.genres.map(genre => genre.name);
@@ -97,6 +98,10 @@ export function queueBtnToggleOff() {
 
 export function watchedBtnToggleOff() {
   refs.watchedBtn.classList.remove('active-library-button');
+}
+
+function appendNothingAddedmarkup() {
+  refs.container.innerHTML = nothingAddedmarkup();
 }
 
 function clearContainer() {

@@ -29,7 +29,6 @@ export default function renderFilmCard({ root, base_url, poster_size, movie, gen
     `
     <div class="movie" data-id="${id}">
       <img
-        loading="lazy"
         class="movie__cover"
         ${src}
       />

@@ -4,8 +4,7 @@ export default function renderFilmCard({ root, base_url, poster_size, movie, gen
   let date = '';
   if (poster_path) {
     src = `
-    src=""
-    data-src="${base_url}${poster_size}${poster_path}" 
+    src="${base_url}${poster_size}${poster_path}" 
     alt="${title}"
     `
   } else {
@@ -23,7 +22,8 @@ export default function renderFilmCard({ root, base_url, poster_size, movie, gen
     `
     <div class="movie" data-id="${id}">
       <img
-        class="movie__cover lazyload"
+        loading="lazy"
+        class="movie__cover"
         ${src}
       />
       <h2 class="card-preview-info__name">${title}</h2>

@@ -2,6 +2,7 @@ import { changeToHomeHeaderMarkup, changeToLibraryHeaderMarkup } from './dynamic
 import { onWatchedBtnClick, queueBtnToggleOff, watchedBtnToggleOff } from './libraryButtons';
 import { hidePagination, showPagination } from './pagination';
 import renderPopFilms from './showMovieGallery';
+import { showSwitcher, hideSwitcher } from './theme-switcher';
 
 const refs = {
   logo: document.querySelector('.logo'),
@@ -20,6 +21,7 @@ const homeMarkup = () => {
   queueBtnToggleOff();
   watchedBtnToggleOff();
   showPagination();
+  showSwitcher();
   refs.slider.classList.remove('visually-hidden');
 };
 
@@ -28,6 +30,7 @@ const libraryMarkup = () => {
   changeToLibraryHeaderMarkup();
   onWatchedBtnClick();
   hidePagination();
+  hideSwitcher();
 };
 
 function onNavItemClick(e) {

@@ -51,7 +51,6 @@ async function showMovieData() {
     sliders.insertAdjacentHTML(
       'beforeend',
       `<img class="img-${index} slider-img"
-      loading="lazy"
       src="https://image.tmdb.org/t/p/w185/${cur.poster_path}"
       alt="${cur.title}" 
       data-id="${cur.id}" />`,

@@ -82,3 +82,41 @@
     margin-right: 30px;
   }
 }
+
+.nothing-added {
+  align-items: center;
+
+  text-align: center;
+  margin: auto;
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.nothing-added__text {
+  font-size: 36px;
+  font-weight: 350;
+  margin-bottom: 20px;
+  word-break: normal;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+    margin-right: 20px;
+
+    font-size: 44px;
+  }
+  @media screen and (min-width: 1024px) {
+    font-size: 48px;
+  }
+}
+
+.nothing-added__img {
+  width: 180px;
+  display: inline-block;
+
+  @media screen and (min-width: 768px) {
+    width: 185px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 195px;
+  }
+}

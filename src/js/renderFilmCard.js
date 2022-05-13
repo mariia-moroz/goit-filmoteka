@@ -4,9 +4,16 @@ export default function renderFilmCard({ root, base_url, poster_size, movie, gen
   let date = '';
   if (poster_path) {
     src = `
-    src="${base_url}${poster_size}${poster_path}" 
+    src="${base_url}w185${poster_path}"
+            srcset="
+              ${base_url}w185${poster_path}                     1x,
+              ${base_url}${poster_size}${poster_path}           2x
+            "
     alt="${title}"
     `
+    // src="${base_url}${poster_size}${poster_path}" 
+    // alt="${title}"
+    // `
   } else {
     src = '';
   }

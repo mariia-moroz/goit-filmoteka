@@ -2,7 +2,6 @@ import { throttle } from "throttle-debounce";
 const scrollTop = document.querySelector('.scroll-to-top');
 
 if (window.innerWidth >= 480) {
-  console.log('scroll');
   window.addEventListener('scroll', throttle(500, () => {
   if (window.scrollY > 700) {
     scrollTop.classList.add('scroll-to-top--active');

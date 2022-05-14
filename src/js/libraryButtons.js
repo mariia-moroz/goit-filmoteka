@@ -45,9 +45,7 @@ function onQueueBtnClick() {
   queueBtnToggle();
 
   const queueFilms = JSON.parse(localStorage.getItem('Queue'));
-  console.log(queueFilms);
   if (queueFilms === null || queueFilms.length === 0) {
-    console.log(queueFilms);
     return appendNothingAddedmarkup();
   } else {
     queueFilms.forEach(film => {

@@ -43,7 +43,7 @@ class Notification {
   }
 
   onError() {
-    Notiflix.Notify.failure('Sorry, something went wrong :(', this.options);
+    Notiflix.Notify.failure('Sorry, no movie found :(', this.options);
   }
 }
 

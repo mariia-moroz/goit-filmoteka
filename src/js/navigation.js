@@ -22,8 +22,10 @@ const homeMarkup = () => {
   watchedBtnToggleOff();
   showPagination();
   showSwitcher();
-  refs.slider.classList.remove('visually-hidden');
+  refs.slider.classList.remove('hidden');
 };
+
+export { homeMarkup };
 
 const libraryMarkup = () => {
   clearContainer();
@@ -51,7 +53,7 @@ function onLogoClick(e) {
 }
 
 function clearContainer() {
-  refs.slider.classList.add('visually-hidden');
+  refs.slider.classList.add('hidden');
   if (refs.container.innerHTML !== '') {
     refs.container.innerHTML = '';
   }

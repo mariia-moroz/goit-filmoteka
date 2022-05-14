@@ -22,15 +22,3 @@ export function showSwitcher() {
 export function hideSwitcher() {
   switcher.classList.add('visually-hidden');
 }
-
-// navLib.addEventListener('click', () => {
-//   if (navLib) {
-//     switcher.classList.add('visually-hidden');
-//   }
-// });
-
-// home.addEventListener('click', () => {
-//   if (home) {
-//     switcher.classList.remove('visually-hidden');
-//   }
-// });

@@ -5,7 +5,7 @@ import saveConfiguration from './saveConfiguration';
 import configuration from './configuration';
 import { pagination, paginationOptions } from './pagination';
 import { hideSlider } from './slider';
-
+import { homeMarkup } from './navigation';
 
 let filmToFind;
 
@@ -18,14 +18,17 @@ const refs = {
 refs.btnSrch.addEventListener('click', onBtn);
 refs.inpSrch.addEventListener('input', onInput);
 function onInput() {
-  filmToFind = refs.inpSrch.value.trim();
+  if (refs.inpSrch.value) {
+    filmToFind = refs.inpSrch.value.trim();
+  } else {
+    filmToFind = '';
+  }
   return filmToFind;
 }
 
 async function onBtn(event) {
   event.preventDefault();
   notiflix.onLoadingleAdd();
-  hideSlider();
   showGallery();
   notiflix.onLoadingRemove();
 }
@@ -63,9 +66,17 @@ export async function renderNameFilms() {
   const paginationData = localStorage.getItem('pagination-page-search');
   const pageFromLS = JSON.parse(paginationData);
 
+  if (!filmToFind) {
+    notiflix.onError();
+    homeMarkup();
+    return;
+  }
+
   if (pageFromLS) {
     options.page = pageFromLS;
   } 
+
+  hideSlider();
 
   MovieClear();
 
@@ -88,5 +99,12 @@ export async function renderNameFilms() {
     console.error('error is: ', error);
   }
 
+  if (options.searchResults.total_results === 0) {
+    notiflix.onError();
+    homeMarkup();
+    return;
+  }
+
+  console.log(options.searchResults);
   renderPopularFilmCards(options);
 }

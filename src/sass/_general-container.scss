@@ -87,6 +87,7 @@
   align-items: center;
   text-align: center;
   margin: auto;
+  margin-bottom: 31px;
   @media screen and (min-width: 768px) {
     display: flex;
   }
@@ -102,10 +103,10 @@
     margin-bottom: 0;
     margin-right: 20px;
 
-    font-size: 38px;
+    font-size: 34px;
   }
   @media screen and (min-width: 1024px) {
-    font-size: 40px;
+    font-size: 36px;
   }
 }
 

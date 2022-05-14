@@ -28,7 +28,7 @@ export function onWatchedBtnClick() {
 
   const watchedFilms = JSON.parse(localStorage.getItem('Watched'));
 
-  if (watchedFilms == '') {
+  if (watchedFilms === null || watchedFilms.length === 0) {
     appendNothingAddedmarkup();
   } else if (watchedFilms !== null) {
     watchedFilms.forEach(film => {
@@ -45,9 +45,10 @@ function onQueueBtnClick() {
   queueBtnToggle();
 
   const queueFilms = JSON.parse(localStorage.getItem('Queue'));
-
-  if (queueFilms == '') {
-    appendNothingAddedmarkup();
+  console.log(queueFilms);
+  if (queueFilms === null || queueFilms.length === 0) {
+    console.log(queueFilms);
+    return appendNothingAddedmarkup();
   } else {
     queueFilms.forEach(film => {
       options.genresList = film.genres.map(genre => genre.name);

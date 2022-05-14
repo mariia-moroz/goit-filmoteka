@@ -17,6 +17,7 @@ const refs = {
 
 refs.btnSrch.addEventListener('click', onBtn);
 refs.inpSrch.addEventListener('input', onInput);
+
 function onInput() {
   if (refs.inpSrch.value) {
     filmToFind = refs.inpSrch.value.trim();
@@ -67,7 +68,7 @@ export async function renderNameFilms() {
   const pageFromLS = JSON.parse(paginationData);
 
   if (!filmToFind) {
-    notiflix.onError();
+    notiflix.onNoFilmFound();
     homeMarkup();
     return;
   }
@@ -86,6 +87,7 @@ export async function renderNameFilms() {
     options.searchResults = data;
     pagination.setTotalItems(options.searchResults.total_results);
   } catch (error) {
+    notiflix.onError();
     console.error('error is: ', error);
   }
 
@@ -96,15 +98,15 @@ export async function renderNameFilms() {
     const { data } = await getData(options.genresUrl + options.key);
     options.genres = data.genres;
   } catch (error) {
+    notiflix.onError();
     console.error('error is: ', error);
   }
 
   if (options.searchResults.total_results === 0) {
-    notiflix.onError();
+    notiflix.onNoFilmFound();
     homeMarkup();
     return;
   }
 
-  console.log(options.searchResults);
   renderPopularFilmCards(options);
 }

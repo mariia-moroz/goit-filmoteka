@@ -204,11 +204,6 @@
 .tui-pagination .tui-ico-first {
     font-size: 14px;
     font-weight: 500;
-    // display: none;
-
-    // width: 11px;
-    // height: 10px;
-    // background-position: 0px 0px
 }
 
 .tui-pagination .tui-ico-prev {
@@ -217,9 +212,6 @@
     height: 16px;
     background-repeat: no-repeat;
     background-position: center;
-    //fill: $primary-text-color;
-    //  background-position: -26px 0px;
-
 }
 
 .tui-pagination .tui-ico-next {
@@ -228,23 +220,12 @@
     height: 16px;
     background-repeat: no-repeat;
     background-position: center;
-    //fill: $primary-text-color;
-    //  background-position: -13px -24px
 }
 
 .tui-pagination .tui-ico-last {
     font-size: 14px;
     font-weight: 500;
-    // background-position: 0px -12px
 }
-
-//  .tui-pagination .tui-ico-ellip {
-//      width: 10px;
-//      height: 2px;
-//      margin-top: 16px;
-//      vertical-align: top;
-//      background-position: 0px -24px
-//  }
 
 .tui-pagination .tui-is-disabled:hover {
     background: #fff;
@@ -285,15 +266,3 @@
     border: 0;
     outline: none;
 }
-
-//  .tui-page-inputs .tui-page-current {
-//      color: #4b96e6
-//  }
-
-//  .tui-page-separator {
-//      display: inline-block;
-//      font-size: 12px;
-//      height: 12px;
-//      padding: 8px 0 6px;
-//      vertical-align: top
-//  } 

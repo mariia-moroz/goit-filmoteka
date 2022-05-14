@@ -23,7 +23,7 @@ a {
   min-width: 320px;
   width: 100%;
   overflow: hidden;
-  min-height: calc(100vh - 230px - 100px - 40px - 40px);
+  min-height: calc(100vh - 230px - 100px);
 
   @media screen and (min-width: 480px) {
     width: 480px;
@@ -32,7 +32,7 @@ a {
   @media screen and (min-width: 768px) {
     width: 768px;
     padding: 0 76px;
-    min-height: calc(100vh - 230px - 77px - 40px - 60px);
+    min-height: calc(100vh - 230px - 77px);
   }
 
   @media screen and (min-width: 1024px) {

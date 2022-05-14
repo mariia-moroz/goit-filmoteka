@@ -2,6 +2,7 @@
     display: block;
     padding-top: 60px;
     padding-bottom: 20px;
+    min-height: max-content;
 
     @media screen and (max-width: 768px) {
         display: none;
@@ -34,6 +35,7 @@
     padding: 10px ;
     display: flex;
     align-items: center;
+    min-height: 230px;
 }
 
 .carouselbox img {

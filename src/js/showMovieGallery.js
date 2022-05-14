@@ -30,6 +30,8 @@ pagination.setTotalItems(20000);
 pagination.movePageTo(pageFromLS);
 
 export default function showMovieGallery() { 
+  localStorage.setItem('Watched', JSON.stringify([]));
+  localStorage.setItem('Queue', JSON.stringify([]));
   paginationOptions.key = 'popular';
   renderPopFilms();
 }

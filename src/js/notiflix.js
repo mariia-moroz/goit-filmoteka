@@ -42,8 +42,12 @@ class Notification {
     Notiflix.Notify.warning('Oops, you did not add anything to "QUEUE"', this.options);
   }
 
-  onError() {
+  onNoFilmFound() {
     Notiflix.Notify.failure('Sorry, no movie found :(', this.options);
+  }
+
+  onError() {
+    Notiflix.Notify.failure('Sorry, something went wrong :(', this.options);
   }
 }
 

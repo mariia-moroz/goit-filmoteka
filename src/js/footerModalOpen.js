@@ -30,15 +30,18 @@ function openModal() {
 function closeModal() {
   refs.modal.classList.add('footer__backdrop--hidden');
   refs.bodyScroll.classList.remove('is-open');
-  document.removeEventListener('keydown', eventKeydown);
   refs.modal.classList.remove('modal-bg');
-  array.map(item => {
-    item.classList.add('big');
-    item.style.opacity = '0';
-  });
-  refs.overlay.style.opacity = '1';
-  refs.modal.classList.remove('modal-bg');
+
+  setTimeout(showOverlay, 1000);
+  setTimeout(() => {
+    array.map(item => {
+      item.classList.add('big');
+      item.style.opacity = '0';
+    });
+  }, 1000);
+
   refs.closeModalBtn.removeEventListener('click', closeModal);
+  document.removeEventListener('keydown', eventKeydown);
 }
 
 function eventKeydown(event) {
@@ -51,6 +54,10 @@ function eventKeydown(event) {
 
 function hideOverlay() {
   refs.overlay.style.opacity = '0';
+}
+
+function showOverlay() {
+  refs.overlay.style.opacity = '1';
 }
 
 function toggleBackground() {

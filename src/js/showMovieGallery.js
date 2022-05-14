@@ -1,10 +1,10 @@
-// import './sass/main.scss';
 import renderPopularFilmCards from './renderPopularFilmCards';
 import getData from './getData';
 import saveConfiguration from './saveConfiguration';
 import configuration from './configuration';
 import { pagination, paginationOptions } from './pagination';
 import { showSlider } from './slider'
+import notiflix from './notiflix';
 
 const options = {
   root: null,
@@ -30,8 +30,6 @@ pagination.setTotalItems(20000);
 pagination.movePageTo(pageFromLS);
 
 export default function showMovieGallery() { 
-  localStorage.setItem('Watched', JSON.stringify([]));
-  localStorage.setItem('Queue', JSON.stringify([]));
   paginationOptions.key = 'popular';
   renderPopFilms();
 }
@@ -54,6 +52,7 @@ export async function renderPopFilms() {
     options.searchResults = data;
     pagination.setTotalItems(options.searchResults.total_results);
   } catch (error) {
+    notiflix.onError();
     console.error('error is: ', error);
   }
 
@@ -65,6 +64,7 @@ export async function renderPopFilms() {
     const { data } = await getData(options.genresUrl + options.key);
     options.genres = data.genres;
   } catch (error) {
+    notiflix.onError();
     console.error('error is: ', error);
   }
 

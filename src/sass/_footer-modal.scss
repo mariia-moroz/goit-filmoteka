@@ -23,6 +23,8 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transition: opacity 250ms linear, visibility 250ms linear;
+
 }
 
 .overlay {
@@ -69,6 +71,7 @@
     background-color: #fff;
     position: relative;
     margin: 0 auto;
+  transition: transform 250ms linear;
 
     @media screen and (max-width: 767px) {
       max-width: 450px;
@@ -89,7 +92,7 @@
   }
 
   .footer__backdrop--hidden & {
-    transform: translate(-50%, -50%) scale(1.5);
+    transform: translate(-50%, -50%) scale(0.5);
   }
 }
 

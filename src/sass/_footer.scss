@@ -1,6 +1,10 @@
 footer {
     background-color: $secondary-white-color;
     min-width: 320px;
+
+    body.dark & {
+        background-color: #343434;
+    }
 }
 
 .footer_container {
@@ -33,6 +37,9 @@ footer {
         }
     }
 
+    body.dark & {
+        background-color: #343434;
+    }
 }
 
 .footer_icon {

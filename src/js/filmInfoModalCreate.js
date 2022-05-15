@@ -15,11 +15,13 @@ const options = {
   root: null,
   filmId: '',
   key: 'api_key=306e564986f0782b8ec4bf227b0f3c28',
+  youtube_key: 'AIzaSyBlWsjf1cMY-jgDvmtH3uyJeieKZjaJ8ck',
   filmInfo: {},
   img_base_url: 'none',
   poster_size: '',
   baseUrl: 'https://api.themoviedb.org/3/movie/',
   filmInfoUrl: '',
+  filmTrailerUrl: '',
   configUrl: 'https://api.themoviedb.org/3/configuration?',
 };
 
@@ -163,14 +165,39 @@ function onModalCreated() {
 
 function onWatchTrailerClick() {
   onCloseButtonClick();
-  createVideoModal();
+  options.filmTrailerUrl = `${options.baseUrl}${options.filmId}/videos?`;
+  getTrailer();
 }
 
-function createVideoModal() {
+async function getTrailer() {
+  notiflix.onLoadingleAdd();
+
+  try {
+    const { data } = await getData(options.filmTrailerUrl + options.key);
+    options.filmInfo = data;
+
+    createVideoModal(options);
+  } catch (error) {
+    notiflix.onError();
+    console.error('error is: ', error);
+  }
+
+  notiflix.onLoadingRemove();
+}
+
+
+function createVideoModal({ filmInfo }) {
   const modal = `
     <div class="video-modal__container">
-        
         <button type="button" class="modal__close-button"></button>
+        <div class='trailer-container'>
+        <iframe
+        class="player"
+        src="https://www.youtube.com/embed/${filmInfo.results[length].key}"
+        frameborder="0"
+        allowfullscreen>
+        </iframe>
+        </div>
     </div>
     `;
   

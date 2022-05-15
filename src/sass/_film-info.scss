@@ -331,6 +331,7 @@ body.is-open {
     background-color: transparent;
     border: none;
 
+    .video-modal__container.dark &,
     .film-info__container.dark & {
         background-image: url('../images/close-light.svg');
     }

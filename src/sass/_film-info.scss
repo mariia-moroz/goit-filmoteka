@@ -20,7 +20,6 @@ body.is-open {
   overflow: hidden;
 }
 
-.video-modal__overlay,
 .film-info__overlay {
     opacity: 0;
     pointer-events: none;
@@ -332,7 +331,37 @@ body.is-open {
     background-color: transparent;
     border: none;
 
+    .video-modal__container.dark &,
     .film-info__container.dark & {
         background-image: url('../images/close-light.svg');
     }
+}
+
+.video-modal__container {
+    display: flex;
+    justify-content: center;
+}
+
+.trailer-container {
+    position: relative;
+    width: 100%;
+    min-width: 260px;
+
+    @media screen and (max-width: 768px) {
+        height: calc(400px / 1.77);
+    }
+
+    @media screen and (min-width: 768px) {
+        height: 295px;  
+        width: 94%;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        height: 430px;
+    }
+}
+
+.player {
+    width: 100%;
+    height: 100%;
 }

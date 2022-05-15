@@ -13,6 +13,12 @@ function onDarkTheme() {
   footer.classList.toggle('dark');
   footerText.classList.toggle('dark');
   filmInfo.classList.toggle('dark-modal');
+
+  if (localStorage.getItem('theme') === 'light') {
+    localStorage.setItem('theme', 'dark');
+  } else {
+    localStorage.setItem('theme', 'light');
+  }
 }
 
 export function showSwitcher() {
@@ -21,4 +27,20 @@ export function showSwitcher() {
 
 export function hideSwitcher() {
   switcher.classList.add('visually-hidden');
+}
+
+export function checkTheme() {
+  const currentTheme = localStorage.getItem('theme');
+
+  if (currentTheme === null) {
+    localStorage.setItem('theme', 'light');
+    return;
+  } 
+
+  if (currentTheme === 'light') {
+    return;
+  } else {
+    localStorage.setItem('theme', 'light');
+    onDarkTheme();
+  }
 }

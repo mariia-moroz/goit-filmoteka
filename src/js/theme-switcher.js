@@ -42,5 +42,6 @@ export function checkTheme() {
   } else {
     localStorage.setItem('theme', 'light');
     onDarkTheme();
+    checkbox.checked = true;
   }
 }

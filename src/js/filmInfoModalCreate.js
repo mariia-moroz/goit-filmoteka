@@ -151,7 +151,7 @@ function createModal({ filmInfo, img_base_url }) {
 
 function onModalCreated() {
   const closeButton = options.root.querySelector('.modal__close-button');
-  const modalContainer = options.root.firstChild;
+  const modalContainer = options.root;
 
   options.root.classList.add('is-open');
   document.body.classList.add('is-open');
@@ -159,7 +159,7 @@ function onModalCreated() {
   window.addEventListener('keydown', onKeyboardCloseModal);
 
   if (options.root.classList.contains('dark-modal')) {
-    modalContainer.classList.add('dark');
+    modalContainer.children[0].classList.add('dark');
   }
 }
 

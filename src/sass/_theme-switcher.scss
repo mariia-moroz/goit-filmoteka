@@ -24,7 +24,11 @@
   flex-direction: row-reverse;
 
   @media screen and (max-width: 480px) {
-    margin-top: 40px;
+    margin-top: 46px;
+
+    .header.library-header & {
+      margin-top: 20px;
+    }
   }
 }
 

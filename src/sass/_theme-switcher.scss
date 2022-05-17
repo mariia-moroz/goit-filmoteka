@@ -24,11 +24,15 @@
   flex-direction: row-reverse;
 
   .header.header-home & {
-    margin-top: 25px;
+    margin-top: 28px;
   }
 
   @media screen and (max-width: 480px) {
     margin-top: 46px;
+
+    .header.header-home & {
+        margin-top: 45px;
+    }
 
     .header.library-header & {
       margin-top: 20px;
